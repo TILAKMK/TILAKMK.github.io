@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Tilak Bhat | Pulse Collage Portfolio</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&amp;display=swap" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'pure-black': '#000000',
+                        'vibrant-red': '#FF0000',
+                        'vibrant-blue': '#0000FF',
+                        'vibrant-yellow': '#FFFF00',
+                    },
+                    fontFamily: {
+                        'space': ['Space Grotesk', 'sans-serif'],
+                    },
+                    animation: {
+                        'glitch': 'glitch 1s infinite linear alternate-reverse',
+                        'pulse-fast': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        glitch: {
+                            '0%': { transform: 'translate(0)' },
+                            '20%': { transform: 'translate(-2px, 2px)' },
+                            '40%': { transform: 'translate(-2px, -2px)' },
+                            '60%': { transform: 'translate(2px, 2px)' },
+                            '80%': { transform: 'translate(2px, -2px)' },
+                            '100%': { transform: 'translate(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #000000; color: white; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
+        .paper-tear { clip-path: polygon(0% 0%, 100% 2%, 98% 95%, 85% 98%, 50% 95%, 15% 100%, 2% 95%); }
+        .glitch-text-red { text-shadow: 4px 0 #FF0000; mix-blend-mode: screen; }
+        .glitch-text-blue { text-shadow: -4px 0 #0000FF; mix-blend-mode: screen; }
+        .pixel-border { border: 4px solid; border-image-source: linear-gradient(to right, #FF0000, #0000FF); border-image-slice: 1; }
+        .grain { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('https://www.transparenttextures.com/patterns/60-lines.png'); opacity: 0.05; pointer-events: none; z-index: 50; }
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(var(--rotate, 0deg)); }
+            50% { transform: translateY(-15px) rotate(var(--rotate, 0deg)); }
+            100% { transform: translateY(0px) rotate(var(--rotate, 0deg)); }
+        }
+        .animate-float { animation: float 4s ease-in-out infinite; }
+        .profile-glow { box-shadow: 0 0 20px rgba(0, 255, 255, 0.4); }
+
+        @keyframes professional-float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-12px); } }
+        .tech-card-float { animation: professional-float 4s ease-in-out infinite; }
+        .glass-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .glass-card:hover { background: rgba(255, 255, 255, 0.07); border-color: rgba(255, 255, 255, 0.3); transform: scale(1.05); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); }
+    
+        .view-hidden { display: none !important; }
+    </style>
+</head>
+<body class="bg-pure-black">
+    <div class="grain"></div>
+
+    <!-- WRAPPER START: This now correctly contains all sections -->
+    <div id="portfolio-view">
+
+        <!-- BEGIN: HeroSection -->
+        <section class="relative h-screen flex flex-col items-center justify-center p-6 overflow-hidden" data-purpose="hero">
+            <canvas id="neural-canvas" class="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-40"></canvas>
+            <div class="absolute top-[20%] left-[10%] text-[10px] text-vibrant-red font-mono opacity-40 animate-pulse"> >> ERROR_SYSTEM_OVERLOAD_</div>
+            <div class="absolute top-[15%] right-[15%] text-[10px] text-vibrant-blue font-mono opacity-40 animate-bounce"> >> NEURAL_NET: INITIALIZED</div>
+            <div class="absolute bottom-[40%] left-[5%] text-[10px] text-vibrant-yellow font-mono opacity-40 -rotate-90"> >> DECRYPTING_PROFILE_DATA...</div>
+
+            <div class="relative z-10 text-center">
+                <div class="flex flex-col md:flex-row items-center justify-center gap-16 md:gap-24">
+                    <div class="relative">
+                        <div class="absolute -top-6 -right-10 z-20 bg-vibrant-blue text-white text-[10px] px-2 py-1 font-black skew-x-12 animate-pulse">LN_INFERENCE: ACTIVE</div>
+                        <div class="absolute -bottom-4 -left-10 z-20 bg-vibrant-red text-white text-[10px] px-2 py-1 font-black -skew-x-12">CORE: STABLE</div>
+                        <div class="animate-float" style="--rotate: -3deg;">
+                            <img alt="Tilak M K Profile" class="w-48 h-48 md:w-64 md:h-64 object-cover rounded-2xl border-4 border-white/10 profile-glow" src="{{DATA:IMAGE:IMAGE_98}}"/>
+                        </div>
+                    </div>
+                    <div class="text-center md:text-left md:pl-10 relative">
+                        <div class="relative z-10">
+                            <h1 class="text-6xl md:text-8xl font-black tracking-tighter leading-none italic animate-glitch">
+                                <span class="block text-vibrant-red glitch-text-red">TILAK</span>
+                                <span class="block text-white">M K</span>
+                                <span class="block text-vibrant-blue glitch-text-blue text-4xl md:text-6xl uppercase">A I & M L  -    S T U D E N T // 2 0 2 6</span>
+                            </h1> 
+                            <div class="mt-8 inline-block bg-vibrant-yellow text-black px-4 py-1 font-bold skew-x-12 shadow-[4px_4px_0px_0px_rgba(255,0,0,1)]">
+                                PULSE COLLAGE v1.0
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="absolute bottom-10 left-10 font-mono text-[10px] md:text-xs text-green-500 space-y-1 opacity-80 hidden md:block">
+                <p>[SYSTEM_READY: 100%]</p>
+                <p>[LATENCY: 4MS]</p>
+                <p>[UPLINK: ACTIVE]</p>
+            </div>
+
+            <div class="absolute bottom-12 left-1/2 -translate-x-1/2 z-30 w-max">
+                <div class="relative group">
+                    <div class="absolute -inset-2 border-2 border-white/30 translate-x-1 translate-y-1"></div>
+                    <div class="absolute -top-3 -left-3 w-3 h-3 bg-vibrant-yellow z-40"></div>
+                    <div class="absolute -bottom-3 -right-3 w-3 h-3 bg-vibrant-red z-40"></div>
+                    <button 
+                        onclick="document.querySelector('[data-purpose=\'education\']').scrollIntoView({behavior: 'smooth'})"
+                        class="relative bg-vibrant-blue hover:bg-white hover:text-vibrant-blue text-white font-black px-10 py-5 tracking-[0.2em] transition-all duration-300 uppercase text-sm md:text-lg shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] active:translate-x-1 active:translate-y-1 active:shadow-none"
+                    >
+                        Enter the Void
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- BEGIN: EducationScrapbook -->
+        <section class="py-20 px-6 space-y-6" data-purpose="education">
+            <h2 class="text-4xl font-bold italic mb-6 border-b-4 border-vibrant-red inline-block">ED_RECORDS //</h2>
+            <div class="flex flex-col gap-2">
+                <div class="relative max-w-lg self-start transform -rotate-2 animate-float">
+                    <div class="bg-white text-black p-6 paper-tear shadow-[10px_10px_0px_0px_rgba(0,0,255,1)]">
+                        <span class="bg-vibrant-red text-white text-xs px-2 py-1 absolute -top-4 -left-2 rotate-3 uppercase font-bold">Priority Info</span>
+                        <div class="flex justify-between items-start gap-4">
+                            <div>
+                                <h3 class="text-2xl font-black uppercase leading-tight">Poornaprajna Pre University College</h3>
+                                <p class="text-sm font-bold mt-2">LOCATION: UDUPI</p>
+                            </div>
+                            <img src="pp.png" alt="Poornaprajna Logo" class="w-16 h-16 object-contain mix-blend-multiply">
+                        </div>
+                        <div class="mt-4 border-t-2 border-dashed border-black pt-4">
+                            <p class="italic">"The Foundation of Logic and Design."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative max-w-lg self-end transform rotate-2 animate-float">
+                    <div class="bg-vibrant-yellow text-black p-6 paper-tear shadow-[10px_10px_0px_0px_rgba(255,0,0,1)]">
+                        <span class="bg-vibrant-blue text-white text-xs px-2 py-1 absolute -top-4 right-4 -rotate-3 uppercase font-bold">Current Node</span>
+                        <div class="flex justify-between items-start gap-4">
+                            <div>
+                                <h3 class="text-2xl font-black uppercase leading-tight">National Institute of Engineering</h3>
+                                <p class="text-sm font-bold mt-2">LOCATION: MYSORE</p>
+                            </div>
+                            <img src="pp1.png" alt="NIE Logo" class="w-16 h-16 object-contain">
+                        </div>
+                        <div class="mt-4 border-t-2 border-dashed border-black pt-4">
+                            <p class="italic">"Engineering the Future Systems."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BEGIN: TechnicalArsenal -->
+        <section class="py-24 px-6 bg-pure-black" data-purpose="skills">
+            <div class="max-w-6xl mx-auto">
+                <div class="mb-16 text-center">
+                    <h2 class="text-3xl md:text-5xl font-light tracking-[0.3em] uppercase text-white mb-4">Technical <span class="font-bold">Arsenal</span></h2>
+                    <div class="w-20 h-1 bg-white/20 mx-auto"></div>
+                </div>
+                <div class="grid grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="tech-card-float" style="animation-delay: 0s;"><div class="glass-card rounded-xl p-10 flex flex-col items-center justify-center h-44"><img alt="Python" class="w-14 h-14 mb-4" src="https://cdn.simpleicons.org/python"/><span class="text-zinc-400 text-xs font-bold tracking-widest uppercase">Python</span></div></div>
+                    <div class="tech-card-float" style="animation-delay: 0.7s;"><div class="glass-card rounded-xl p-10 flex flex-col items-center justify-center h-44"><img alt="C" class="w-14 h-14 mb-4" src="https://cdn.simpleicons.org/c"/><span class="text-zinc-400 text-xs font-bold tracking-widest uppercase">C Language</span></div></div>
+                    <div class="tech-card-float" style="animation-delay: 1.4s;"><div class="glass-card rounded-xl p-10 flex flex-col items-center justify-center h-44"><img alt="C++" class="w-14 h-14 mb-4" src="https://cdn.simpleicons.org/cplusplus"/><span class="text-zinc-400 text-xs font-bold tracking-widest uppercase">C++</span></div></div>
+                    <div class="tech-card-float" style="animation-delay: 2.1s;"><div class="glass-card rounded-xl p-10 flex flex-col items-center justify-center h-44"><img alt="Java" class="w-14 h-14 mb-4" src="https://cdn.simpleicons.org/openjdk/white"/><span class="text-zinc-400 text-xs font-bold tracking-widest uppercase">Java</span></div></div>
+                    <div class="tech-card-float" style="animation-delay: 2.8s;"><div class="glass-card rounded-xl p-10 flex flex-col items-center justify-center h-44"><img alt="Django" class="w-14 h-14 mb-4" src="https://cdn.simpleicons.org/django/092E20"/><span class="text-zinc-400 text-xs font-bold tracking-widest uppercase">Django</span></div></div>
+                    <div class="tech-card-float" style="animation-delay: 3.5s;"><div class="glass-card rounded-xl p-10 flex flex-col items-center justify-center h-44"><img alt="n8n" class="w-14 h-14 mb-4" src="https://cdn.simpleicons.org/n8n/FF6D5B"/><span class="text-zinc-400 text-xs font-bold tracking-widest uppercase">n8n Automation</span></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BEGIN: LiveProjects -->
+        <section class="py-20 px-6" data-purpose="live-projects">
+            <div class="container mx-auto flex flex-col items-center">
+                <div class="relative mb-12 transform rotate-1">
+                    <h2 class="text-5xl md:text-7xl font-black uppercase text-white relative z-10">LIVE_<span class="text-vibrant-red glitch-text-blue">PROJECTS</span></h2>
+                    <div class="absolute -bottom-2 -left-4 w-full h-4 bg-vibrant-yellow -z-10 -skew-x-12"></div>
+                </div>
+                <button class="group relative w-full max-w-2xl transform transition-transform hover:scale-105 active:scale-95">
+                    <div class="bg-white p-8 paper-tear shadow-[15px_15px_0px_0px_rgba(255,0,0,1)] flex flex-col items-center justify-center border-4 border-black">
+                        <div class="absolute top-2 right-2 bg-black text-white px-3 py-1 text-xs font-black uppercase">Network_Status: Active</div>
+                        <div class="text-6xl mb-4 group-hover:animate-pulse">⚡</div>
+                        <h3 class="text-3xl font-black text-black uppercase tracking-tighter mb-2">Explore_Production_Work</h3>
+                        <div class="w-full border-t-4 border-black border-dashed my-4"></div>
+                        <p class="text-black font-bold uppercase italic">[ Click to initiate stream of active deployments ]</p>
+                        <div class="mt-6 bg-black text-white px-10 py-4 font-black text-xl hover:bg-vibrant-blue transition-colors">INITIALIZE STREAM // -></div>
+                    </div>
+                </button>
+            </div>
+        </section>
+
+        <!-- BEGIN: FeaturedArticle -->
+        <section class="py-20 px-6" data-purpose="featured-article">
+            <div class="max-w-4xl mx-auto border-8 border-vibrant-blue p-8 relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-2 bg-vibrant-blue text-black font-black uppercase text-xs">Recommended Read</div>
+                <span class="text-vibrant-red font-black text-xl mb-4 block"># ENGINEERING_INSIGHTS</span>
+                <h2 class="text-4xl md:text-6xl font-black mb-6 uppercase leading-tight">Decentralized Computing in the Age of LLMs</h2>
+                <p class="text-xl text-zinc-400 leading-relaxed mb-8">Exploring how edge computing and distributed GPU networks are redefining the deployment of large language models for student-led research...</p>
+                <button onclick="showArticle()" class="inline-block bg-white text-black px-8 py-3 font-black uppercase hover:bg-vibrant-yellow transition-colors">Read Full Article // -></button>
+            </div>
+        </section>
+
+        <!-- BEGIN: TrophyRoom -->
+        <section class="py-20 px-6" data-purpose="certifications-room">
+            <div class="container mx-auto">
+                <div class="flex flex-col items-center">
+                    <div class="relative mb-12 transform -rotate-1">
+                        <h2 class="text-5xl md:text-7xl font-black uppercase text-white relative z-10">Certifications <span class="text-vibrant-yellow glitch-text-red">Room</span></h2>
+                        <div class="absolute -bottom-2 -left-4 w-full h-4 bg-vibrant-blue -z-10 skew-x-12"></div>
+                    </div>
+                    <button class="group relative w-full max-w-2xl transform transition-transform hover:scale-105 active:scale-95">
+                        <div class="bg-vibrant-yellow p-8 paper-tear shadow-[15px_15px_0px_0px_rgba(0,0,255,1)] flex flex-col items-center justify-center border-4 border-black">
+                            <div class="absolute top-2 left-2 bg-black text-white px-3 py-1 text-xs font-black uppercase">Secure_Access_01</div>
+                            <div class="text-6xl mb-4 group-hover:animate-bounce">📁</div>
+                            <h3 class="text-3xl font-black text-black uppercase tracking-tighter mb-2">View_Academic_Credentials</h3>
+                            <div class="w-full border-t-4 border-black border-dashed my-4"></div>
+                            <p class="text-black font-bold uppercase italic">[ Click to decrypt &amp; reveal stored certifications ]</p>
+                            <div class="mt-6 bg-black text-white px-10 py-4 font-black text-xl hover:bg-vibrant-red transition-colors">ACCESS RECORDS // -&gt;</div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- BEGIN: ResumeDownload -->
+        <section class="py-10 px-6 flex justify-center" data-purpose="resume-download">
+            <div class="relative group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-vibrant-red via-vibrant-blue to-vibrant-yellow rounded blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                <a href="my-resume.pdf" download="Tilak_M_K_Resume.pdf" class="relative flex items-center bg-black px-8 py-4 border border-white/20 hover:border-vibrant-yellow transition-all">
+                    <span class="font-mono text-vibrant-yellow mr-3">$</span>
+                    <span class="font-mono text-white text-sm md:text-lg tracking-tighter uppercase">load_candidate_data() <span class="animate-pulse">_</span></span>
+                    <svg class="ml-4 w-5 h-5 text-vibrant-blue group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                </a>
+            </div>
+        </section>
+
+    </div> <!-- END: portfolio-view wrapper -->
+
+    <!-- REPLACE EVERYTHING INSIDE THE <article> TAG IN YOUR CODE WITH THIS -->
+<article class="space-y-12">
+    <header class="border-l-8 border-vibrant-red pl-6">
+        <h1 class="text-4xl md:text-6xl font-black uppercase leading-tight italic">
+            Decentralized Computing in the Age of <span class="text-vibrant-red">Large Language Models</span>
+        </h1>
+        <p class="text-lg text-vibrant-blue font-bold mt-4 uppercase tracking-widest">
+            Exploring edge computing and distributed GPU networks for student-led research
+        </p>
+    </header>
+
+    <div class="space-y-8 text-zinc-300 text-lg leading-relaxed font-light">
+        <!-- Abstract -->
+        <div class="bg-zinc-900/50 p-6 border-l-4 border-vibrant-yellow italic">
+            <h2 class="text-vibrant-yellow font-black uppercase text-sm mb-2 tracking-tighter">// Abstract</h2>
+            <p>
+                Large Language Models have become one of the most powerful tools in modern artificial intelligence. Despite their usefulness, these models usually depend on centralized cloud infrastructure. This paper discusses how edge computing and distributed GPU networks are changing the way language models can be deployed in academic environments, focusing on accessibility, cost reduction, privacy, and new opportunities for collaborative student research.
+            </p>
+        </div>
+
+        <!-- Introduction -->
+        <section class="space-y-4">
+            <h2 class="text-2xl font-black text-white uppercase border-b border-zinc-800 pb-2">01. Introduction</h2>
+            <p>
+                Artificial intelligence has advanced rapidly, especially with transformer-based language models capable of understanding human-like text. However, the enormous computational demand means they are typically hosted in centralized data centers owned by large tech companies. For students, this creates a gap between theoretical learning and practical experimentation.
+            </p>
+        </section>
+
+        <!-- Decentralized Computing -->
+        <section class="space-y-4">
+            <h2 class="text-2xl font-black text-white uppercase border-b border-zinc-800 pb-2">02. Decentralized Computing and Language Models</h2>
+            <p>
+                Decentralized computing refers to a structure where computation is shared among multiple independent devices. Instead of depending on one centralized supercomputer, universities can combine existing laboratory computers, departmental servers, or student workstations into cooperative computing environments.
+            </p>
+            <p>
+                This approach reduces the need for a single extremely powerful device. If one node becomes unavailable, tasks can be reassigned, making decentralized deployment particularly attractive for research environments where hardware availability may vary.
+            </p>
+        </section>
+
+        <!-- Edge Computing -->
+        <section class="space-y-4">
+            <h2 class="text-2xl font-black text-white uppercase border-b border-zinc-800 pb-2">03. Edge Computing and Local Deployment</h2>
+            <p>
+                Edge computing moves computation closer to the user. When language models run locally on campus machines, response time improves and sensitive academic datasets remain within institutional boundaries. 
+            </p>
+            <p>
+                Running large models locally introduces challenges like GPU memory limits. Researchers use engineering techniques such as reducing numerical precision (quantization) and compressing model weights to make local execution realistic on student-grade hardware.
+            </p>
+        </section>
+
+        <!-- Distributed GPU -->
+        <section class="space-y-4">
+            <h2 class="text-2xl font-black text-white uppercase border-b border-zinc-800 pb-2">04. Distributed GPU Collaboration</h2>
+            <p>
+                Another strategy involves linking multiple GPUs across different systems to function as a shared resource. The model itself is divided so that each machine processes a different portion of the neural network. 
+            </p>
+            <p>
+                In university environments, computer labs often contain mid-range GPUs that remain idle outside teaching hours. Connecting these systems into distributed clusters creates shared AI infrastructure without purchasing extremely expensive enterprise hardware.
+            </p>
+        </section>
+
+        <!-- Benefits -->
+        <section class="space-y-4">
+            <h2 class="text-2xl font-black text-white uppercase border-b border-zinc-800 pb-2">05. Benefits for Student-Led Research</h2>
+            <p>
+                Decentralized deployment lowers the entry barrier. Students gain greater freedom to test new architectures, experiment with dataset fine-tuning, or design specialized academic assistants. It also supports privacy-sensitive research where data cannot be uploaded to external platforms.
+            </p>
+            <p>
+                Beyond technical advantages, these environments strengthen engineering skills. Students learn workload scheduling, network communication, and memory optimization—preparing them for real-world computing challenges.
+            </p>
+        </section>
+
+        <!-- Future and Conclusion -->
+        <section class="space-y-4">
+            <h2 class="text-2xl font-black text-white uppercase border-b border-zinc-800 pb-2">06. Future Outlook & Conclusion</h2>
+            <p>
+                In the future, universities may develop campus-wide shared AI grids where departments contribute computing resources to a common research infrastructure. Peer-to-peer GPU sharing networks may also emerge, allowing institutions to collaborate across geographic boundaries.
+            </p>
+            <p class="font-bold text-white pt-4">
+                The shift toward decentralized computing represents not only a technical innovation but also an educational transformation that may redefine how future engineers learn, experiment, and contribute to artificial intelligence research.
+            </p>
+        </section>
+
+        <div class="pt-12 border-t border-zinc-800 text-sm font-mono text-zinc-500">
+            [END_OF_DOCUMENT] <br>
+            LOC_REF: MYSORE_NODE_2026
+        </div>
+    </div>
+</article>
+
+    <!-- BEGIN: ContactFooter -->
+    <footer class="p-6 border-t border-zinc-800" data-purpose="contact">
+        <div class="bg-black border-2 border-vibrant-red p-6 font-mono">
+            <div class="flex items-center gap-2 mb-4">
+                <div class="w-3 h-3 bg-vibrant-red rounded-full"></div>
+                <div class="w-3 h-3 bg-vibrant-yellow rounded-full"></div>
+                <div class="w-3 h-3 bg-vibrant-blue rounded-full"></div>
+                <span class="ml-2 text-zinc-500 text-xs">tilak@terminal ~ 2026</span>
+            </div>
+            <div class="space-y-4">
+                <p class="text-vibrant-blue">$ <span class="text-white">GET CONTACT_CHANNELS</span></p>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <a class="block hover:text-vibrant-yellow" href="#">-> EMAIL: tilakbhat@gmail.com</a>
+                    <a class="block hover:text-vibrant-yellow" href="#">-> GITHUB: /tilakbhat-dev</a>
+                    <a class="block hover:text-vibrant-yellow" href="#">-> LINKEDIN: /in/tilak-bhat</a>
+                    <a class="block hover:text-vibrant-yellow" href="#">-> TWITTER: @tilak_26</a>
+                </div>
+                <p class="animate-pulse-fast text-vibrant-yellow">_ <span class="text-white">WAITING FOR INPUT...</span></p>
+            </div>
+            <div class="mt-12 text-[10px] text-zinc-600 uppercase flex justify-between">
+                <span>© 2026 Tilak Bhat</span>
+                <span>DESIGN_GEN: PULSE_COLLAGE_1.0</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showArticle() {
+            document.getElementById('portfolio-view').classList.add('view-hidden');
+            document.getElementById('article-view').classList.remove('view-hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function showPortfolio() {
+            document.getElementById('article-view').classList.add('view-hidden');
+            document.getElementById('portfolio-view').classList.remove('view-hidden');
+            window.scrollTo(0, 0);
+        }
+
+        const canvas = document.getElementById('neural-canvas');
+        const ctx = canvas.getContext('2d');
+        const maxDistance = 150;
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.5;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            draw() {
+                ctx.fillStyle = '#FFFFFF';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        let particles = [];
+        function init() {
+            resize();
+            particles = [];
+            const count = window.innerWidth < 768 ? 40 : 100;
+            for (let i = 0; i < count; i++) particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                for (let j = i; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < maxDistance) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${1 - dist/maxDistance})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                        ctx.closePath();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', init);
+        init();
+        animate();
+    </script>
+</body>
+</html>
