@@ -245,26 +245,31 @@
             </div>
         </section>
 
-      <!-- Certification Access Point -->
+     <!-- Certification Access Point -->
 <section class="py-16 md:py-20 px-4 md:px-6 overflow-hidden">
     <div class="container mx-auto flex flex-col items-center">
-        <!-- Heading with the ORIGINAL blue line styling -->
-        <div class="relative mb-12">
-            <h2 class="text-4xl md:text-7xl font-black uppercase text-white relative z-10">Academic <span class="text-vibrant-yellow">Vault</span></h2>
-            <div class="absolute -bottom-2 -left-4 w-full h-4 bg-vibrant-blue -z-10 skew-x-12"></div>
+        
+        <!-- Heading Wrapper: added 'inline-block' so the line matches the text width -->
+        <div class="relative mb-12 inline-block">
+            <h2 class="text-4xl md:text-7xl font-black uppercase text-white relative z-10">
+                Academic <span class="text-vibrant-yellow">Vault</span>
+            </h2>
+            <!-- Line Fix: Changed -z-10 to z-0 and adjusted width to ensure it shows clearly -->
+            <div class="absolute -bottom-1 md:-bottom-2 -left-2 md:-left-4 w-[105%] h-3 md:h-4 bg-vibrant-blue z-0 skew-x-12"></div>
         </div>
 
         <button id="vault-access-btn" onclick="openVault()" class="group relative w-full max-w-2xl transform transition-all hover:scale-105 active:scale-95">
             <!-- Card Fix: p-6 on mobile prevents congestion -->
             <div class="bg-vibrant-yellow p-6 md:p-10 paper-tear shadow-[15px_15px_0px_0px_rgba(0,0,255,1)] flex flex-col items-center justify-center border-4 border-black">
+                <!-- Using a standard folder emoji to ensure it loads on all devices -->
                 <div id="vault-emoji" class="text-6xl md:text-7xl mb-4 group-hover:rotate-12 transition-transform">📁</div>
                 
-                <!-- Text Fix: text-lg on mobile ensures the long word fits inside the box -->
+                <!-- Text Fix: text-lg on mobile ensures it stays inside the card -->
                 <h3 class="text-lg md:text-3xl font-black text-black uppercase tracking-tighter text-center">Initialize_Records_Sync</h3>
                 
                 <div class="w-full border-t-4 border-black border-dashed my-6"></div>
                 
-                <!-- Status Fix: text-sm on mobile ensures the button doesn't overflow -->
+                <!-- Button Fix: Adjusts for mobile so it never "congests" -->
                 <div id="vault-status" class="bg-black text-white px-6 md:px-10 py-3 md:py-5 font-black text-sm md:text-2xl group-hover:bg-vibrant-red transition-all uppercase text-center w-full md:w-auto">
                     Access Records // ->
                 </div>
