@@ -132,11 +132,13 @@
     top: 74px;
     left: 0;
     right: 0;
-    z-index: 99;
+    z-index: 150;
     padding: 14px 16px 18px;
     background: rgba(8,8,8,0.97);
     border-bottom: 1px solid var(--border);
     backdrop-filter: blur(12px);
+    max-height: calc(100vh - 74px);
+    overflow-y: auto;
   }
   .mobile-nav-panel a {
     display: block;
@@ -533,6 +535,11 @@
 
   /* Mobile Fix */
   @media (max-width: 992px) {
+    .nav-links { display: none; }
+    .nav-status { display: none; }
+    .mobile-nav-toggle { display: inline-flex; }
+    nav { padding: 14px 16px; }
+    .mobile-nav-panel { top: 72px; }
     .contact-wrapper { grid-template-columns: 1fr; gap: 48px; }
     .contact-title-large { font-size: clamp(2.2rem, 8vw, 3.1rem); }
     .contact-desc { margin-bottom: 36px; }
@@ -561,10 +568,6 @@
     body { cursor: auto; }
     .cursor, .cursor-ring { display: none; }
     .container { padding: 0 16px; }
-    nav { padding: 14px 16px; }
-    .nav-links { display: none; }
-    .nav-status { display: none; }
-    .mobile-nav-toggle { display: inline-flex; }
     .mobile-nav-panel { display: none; }
     #hero { padding: 100px 20px 50px; }
     .hero-title { font-size: clamp(2.8rem, 15vw, 4.8rem); line-height: 0.95; }
@@ -842,14 +845,14 @@
         <div><div class="cert-top"><span class="cert-node">NODE_09</span><span class="cert-date">DEC 2025</span></div>
         <div class="cert-name">Python for Beginners</div>
         <div class="cert-issuer">SCALER</div></div>
-        <a class="cert-verify" href="https://media.licdn.com/dms/image/v2/D562DAQE7fL_DBbWYNQ/profile-treasury-image-shrink_1280_1280/B56Ztwh0s.K8AQ-/0/1767119474233?e=1772877600&v=beta&t=OI42bGqYb-MYKE_l6vvpMLsej1FpJcUq7VVXxyI7iJU" target="_blank">Verify ↗</a>
+        <a class="cert-verify" href="https://media.licdn.com/dms/image/v2/D562DAQE7fL_DBbWYNQ/profile-treasury-image-shrink_1280_1280/B56Ztwh0s.K8AQ-/0/1767119474233?e=1774029600&v=beta&t=b-mNg3HB6M4viKc1nIw-vts2i-pFM79JOVVy0F5Zqpc" target="_blank">Verify ↗</a>
       </div>
 
       <div class="cert-card">
         <div><div class="cert-top"><span class="cert-node">NODE_10</span><span class="cert-date">NOV 2025</span></div>
         <div class="cert-name">Upskilling Org on AI</div>
         <div class="cert-issuer">LINKEDIN LEARNING</div></div>
-        <a class="cert-verify" href="https://media.licdn.com/dms/image/v2/D4E2DAQEeHE54T4bJMA/profile-treasury-document-cover-images_480/B4EZp9bCXdIQBI-/0/1763040832337?e=1772877600&v=beta&t=zLTmnE5OdPIEoHWzNXW7bKtXvOBNDJq2QpvOJYEPusc" target="_blank">Verify ↗</a>
+        <a class="cert-verify" href="https://media.licdn.com/dms/image/v2/D4E2DAQEeHE54T4bJMA/profile-treasury-document-images_1280/B4EZp9bCXdIQAU-/1/1763040832429?e=1774483200&v=beta&t=VYAVT40hYhjoMlkwRAJNpSpWC3WPWKUFaX8Wv1KTyJY" target="_blank">Verify ↗</a>
       </div>
 
       <div class="cert-card">
@@ -863,14 +866,14 @@
         <div><div class="cert-top"><span class="cert-node">NODE_12</span><span class="cert-date">NOV 2025</span></div>
         <div class="cert-name">Intro to Generative AI</div>
         <div class="cert-issuer">AMAZON (AWS)</div></div>
-        <a class="cert-verify" href="https://media.licdn.com/dms/image/v2/D4E2DAQFHWa156n9tlA/profile-treasury-document-images_1280/B4EZpzJE5HKcAY-/1/1762868353188?e=1773273600&v=beta&t=u8pzWgD8ljrC6tl8vtip4YWG-OnKquakyk0p0Nf7oag" target="_blank">Verify ↗</a>
+        <a class="cert-verify" href="https://media.licdn.com/dms/image/v2/D4E2DAQFHWa156n9tlA/profile-treasury-document-images_1280/B4EZpzJE5HKcAY-/1/1762868353188?e=1774483200&v=beta&t=sTuXPIId40_ET5mkiWrXOCbC9d2MBSWaj0XXvhdaX_s" target="_blank">Verify ↗</a>
       </div>
 
       <div class="cert-card">
         <div><div class="cert-top"><span class="cert-node">NODE_13</span><span class="cert-date">NOV 2025</span></div>
         <div class="cert-name">Innovating with Cloud AI</div>
         <div class="cert-issuer">GOOGLE CLOUD TRAINING</div></div>
-        <a class="cert-verify" href="https://certificates.simplicdn.net/share/9369152_96771161762782422523.pdf" target="_blank">Verify ↗</a>
+        <a class="cert-verify" href="https://media.licdn.com/dms/image/v2/D4E2DAQFdsf3kctHKqA/profile-treasury-document-images_1280/B4EZpuCAbmGUAU-/1/1762782615743?e=1774483200&v=beta&t=OKKuEsEbQ_1tS-eIj7FRVpE5xr36gvmJ33bkcKYpszI" target="_blank">Verify ↗</a>
       </div>
 
       <div class="cert-card">
@@ -891,7 +894,7 @@
         <div><div class="cert-top"><span class="cert-node">NODE_16</span><span class="cert-date">NOV 2025</span></div>
         <div class="cert-name">AI for All: Basics to GenAI</div>
         <div class="cert-issuer">NVIDIA</div></div>
-        <a class="cert-verify" href="https://media.licdn.com/dms/image/v2/D4E2DAQHPBOdAd0TbNQ/profile-treasury-document-cover-images_800/B4EZpkz7_uHMBA-/0/1762627930072?e=1772877600&v=beta&t=16i49U0EIrYa3IouFcfkSOa2gChMKrMEhYaGcVfbaes" target="_blank">Verify ↗</a>
+        <a class="cert-verify" href="https://media.licdn.com/dms/image/v2/D4E2DAQHPBOdAd0TbNQ/profile-treasury-document-images_1280/B4EZpkz7_uHMAY-/1/1762627930253?e=1774483200&v=beta&t=gRfTVA9Zd_Bg0C-bkGl05zaxslkGcYcDevvKgxS8Q6Y" target="_blank">Verify ↗</a>
       </div>
 
       <div class="cert-card">
@@ -1186,10 +1189,14 @@
 
   // SCROLL REVEAL
   const reveals = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-  }, { threshold: 0.1 });
-  reveals.forEach(r => io.observe(r));
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => io.observe(r));
+  } else {
+    reveals.forEach(r => r.classList.add('visible'));
+  }
 
   // MOBILE NAV
   const mobileNavToggle = document.getElementById('mobile-nav-toggle');
@@ -1199,6 +1206,16 @@
     mobileNavToggle.addEventListener('click', () => {
       const isOpen = document.body.classList.toggle('menu-open');
       mobileNavToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!document.body.classList.contains('menu-open')) return;
+      const clickedToggle = mobileNavToggle.contains(event.target);
+      const clickedPanel = mobileNavPanel.contains(event.target);
+      if (!clickedToggle && !clickedPanel) {
+        document.body.classList.remove('menu-open');
+        mobileNavToggle.setAttribute('aria-expanded', 'false');
+      }
     });
 
     mobileNavPanel.querySelectorAll('a').forEach(link => {
