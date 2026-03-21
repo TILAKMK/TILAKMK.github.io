@@ -517,11 +517,36 @@
     .contact-wrapper { grid-template-columns: 1fr; }
   }
   @media (max-width: 768px) {
-    .cursor, .cursor-ring, #bg-canvas { display: none; }
-    body { cursor: auto; }
-    .hero-title { font-size: clamp(2rem, 12vw, 3.2rem); }
-    .about-grid { grid-template-columns: 1fr; }
+  .cursor, .cursor-ring, #bg-canvas { display: none; }
+  body { cursor: auto; }
+
+  .hero-title { font-size: clamp(2rem, 12vw, 3.2rem); }
+  .about-grid { grid-template-columns: 1fr; }
+
+  /* 🔥 ADD THESE */
+
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
+
+  .contact-left,
+  .contact-right {
+    width: 100%;
+  }
+
+  .contact-form,
+  .contact-links {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .contact-item {
+    width: 100%;
+    max-width: 100%;
+  }
+
+}
 </style>
 </head>
 <body>
