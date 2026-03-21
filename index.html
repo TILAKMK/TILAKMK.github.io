@@ -178,11 +178,12 @@
 
   /* HERO */
   #hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column; justify-content: flex-end;
-    padding: clamp(100px, 15vh, 120px) clamp(16px, 4vw, 40px) clamp(50px, 8vh, 60px);
-    position: relative; z-index: 1;
-  }
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* 🔥 center vertically */
+  padding: clamp(60px, 10vh, 80px) clamp(16px, 4vw, 40px);
+}
   .hero-tag {
     font-family: var(--font-mono); font-size: 0.7rem;
     color: var(--accent); letter-spacing: 0.2em;
@@ -416,12 +417,90 @@
   .contact-wrapper { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(40px, 8vw, 80px); align-items: flex-start; }
   .contact-title-large { font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 6vw, 4rem); line-height: 1.1; color: #ffffff; margin-bottom: clamp(20px, 4vh, 32px); }
   .contact-desc { color: var(--muted); font-size: clamp(0.95rem, 2vw, 1.1rem); line-height: 1.7; max-width: clamp(350px, 90vw, 450px); margin-bottom: 48px; }
-  .contact-item { display: flex; justify-content: space-between; align-items: center; padding: clamp(16px, 2.5vh, 24px) 0; border-bottom: 1px solid var(--border); text-decoration: none; transition: all 0.3s ease; }
-  .contact-item:hover { border-bottom-color: var(--accent); }
+  .contact-item { 
+  display: flex; 
+  justify-content: center;   /* 🔥 THIS centers */
+  align-items: center; 
+  gap: 20px;                 /* spacing between items */
+  padding: clamp(16px, 2.5vh, 24px) 0; 
+  border-bottom: 1px solid var(--border); 
+  text-decoration: none; 
+  transition: all 0.3s ease; 
+}.contact-item {
+  display: flex;
+  justify-content: space-between;   /* 🔥 FIX */
+  align-items: center;
+  padding: clamp(16px, 2.5vh, 24px) 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 600px;
+}.contact-item:hover { border-bottom-color: var(--accent); }
+  .item-arrow {
+  stroke: #ffffff;
+}
   .item-label { font-family: var(--font-mono); font-size: clamp(0.6rem, 1vw, 0.65rem); color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; }
   .item-value { font-family: var(--font-display); font-weight: 600; font-size: clamp(1rem, 2.5vw, 1.4rem); color: #888; transition: color 0.3s ease; }
   .btn-resume-framed { display: inline-flex; align-items: center; gap: clamp(8px, 1.5vw, 12px); padding: clamp(14px, 2.5vh, 18px) clamp(20px, 4vw, 32px); border: 1px solid var(--border); color: #ffffff; font-family: var(--font-mono); font-size: clamp(0.65rem, 1.2vw, 0.75rem); text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; transition: all 0.3s; }
   .btn-resume-framed:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-resume-framed:hover { 
+  border-color: var(--accent); 
+  color: var(--accent); 
+}
+
+/* 👇 ADD FROM HERE */
+
+.contact-right {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.contact-links {
+  grid-column: 1 / -1;   /* 🔥 spans entire width (both columns) */
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* 🔥 centers horizontally */
+  margin-top: 40px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 14px;
+  color: var(--text);
+  font-family: var(--font-mono);
+  outline: none;
+}
+
+.contact-form textarea {
+  min-height: 120px;
+  resize: none;
+}
+
+.contact-form button {
+  background: var(--accent);
+  border: none;
+  padding: 14px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contact-form button:hover {
+  background: #fff;
+  transform: translate(-3px, -3px);
+  box-shadow: 3px 3px 0 var(--accent);
+}
 
   /* FOOTER */
   footer { padding: clamp(20px, 3vh, 32px) clamp(16px, 4vw, 40px); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 1; flex-wrap: wrap; gap: 12px; }
@@ -670,17 +749,33 @@
         <p class="contact-desc">Open to collaborations, internships, and interesting AI/ML projects. Drop a message anytime.</p>
         <a href="https://tilakmk.github.io/my-resume.pdf" class="btn-resume-framed" target="_blank">Download Resume</a>
       </div>
-      <div class="contact-list reveal" style="transition-delay: 0.2s;">
+      <div class="contact-right reveal" style="transition-delay: 0.2s;">
+
+  <!-- FORM -->
+  <form id="contact-form" class="contact-form">
+  <input type="text" name="user_name" placeholder="NAME / IDENTIFIER" required>
+  <input type="email" name="user_email" placeholder="EMAIL ADDRESS" required>
+  <textarea name="message" placeholder="MESSAGE CONTENT" required></textarea>
+  <button type="submit">TRANSMIT MESSAGE</button>
+</form>
+      </div>
+  <!-- LINKS -->
+  <div class="contact-links">
         <a href="mailto:tilakbhat098@gmail.com" class="contact-item">
           <img src="https://cdn.simpleicons.org/gmail" class="item-logo" alt="Gmail">
           <div><div class="item-label">GMAIL</div></div>
           <svg class="item-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-        </a>
-        <a href="https://www.linkedin.com/in/tilak-m-k-a2408635a/" target="_blank" class="contact-item">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" class="item-logo" alt="LinkedIn">
-          <div><div class="item-label">LinkedIn</div></div>
-          <svg class="item-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-        </a>
+        </a><!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/tilak-m-k-a2408635a/" target="_blank" rel="noopener noreferrer" class="contact-item">
+  <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Linkedin-png-linkedin-icon-1600.png" class="item-logo" alt="LinkedIn">
+        <div>
+          <div class="item-label">LinkedIn</div>
+        </div>
+  <svg class="item-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <path d="M7 17L17 7M17 7H7M17 7v10"/>
+  </svg>
+</a>
+
         <a href="https://github.com/TILAKMK" target="_blank" class="contact-item">
           <img src="https://cdn.simpleicons.org/github" class="item-logo" alt="GitHub">
           <div><div class="item-label">GitHub</div></div>
@@ -694,13 +789,39 @@
         <a href="https://discord.com/users/1372154617881694250" target="_blank" class="contact-item">
           <div class="discord-wrapper">
             <img src="https://cdn.simpleicons.org/discord" class="item-logo" alt="Discord">
+            <div>
+              </div>
+            <div>
+              </div>
+              <div>
+              </div>
+              <div>
+              </div>
+              <div>
+              </div>
+              <div>
+              </div>
+              <div>
+              </div>
+              <div>
+              </div>
+              <div>
+              </div><div>
+              </div>
+              <div>
+              </div>
+              <div>
+              </div>
+              
+
             <div class="item-value" style="color: #aba6a6; font-size: 0.9rem;">ID:1372154617881694250</div>
           </div>
           <svg class="item-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
         </a>
+        
       </div>
     </div>
-  </div>
+  
 </section>
 
 <footer>
@@ -921,6 +1042,27 @@
   
   function openCerts() { document.getElementById('certs-overlay').classList.add('open'); document.body.style.overflow = 'hidden'; }
   function closeCerts() { document.getElementById('certs-overlay').classList.remove('open'); document.body.style.overflow = ''; }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+  (function(){
+    emailjs.init("sBoyhtHKaXGHrq7wM");   // 🔥 replace this
+  })();
+
+  document.getElementById("contact-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    emailjs.sendForm("service_pl2pweg", "template_asf30em", this)  // 🔥 replace template
+      .then(function() {
+        alert("Message sent successfully 🚀");
+      }, function(error) {
+        alert("Failed to send ❌");
+        console.log(error);
+      });
+  });
 </script>
 </body>
 </html>
