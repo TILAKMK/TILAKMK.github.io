@@ -49,11 +49,11 @@
 
   /* CANVAS */
   #bg-canvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.5; }
-/* LOGO STYLES */
+
   .item-logo {
     height: clamp(24px, 5vw, 30px);
     width: auto;
-    filter: brightness(0) invert(1); /* Makes logos pure white */
+    filter: brightness(0) invert(1);
     transition: all 0.3s ease;
   }
   
@@ -62,7 +62,6 @@
     transform: scale(1.1);
   }
 
-  /* Layout fix for Discord (Logo + Text) */
   .discord-wrapper {
     display: flex;
     align-items: center;
@@ -71,7 +70,7 @@
   }
   .contact-item > div,
   .discord-wrapper > div { min-width: 0; }
-  /* LAYOUT */
+
   .container {
     width: min(1200px, 100%);
     margin: 0 auto;
@@ -132,10 +131,6 @@
     cursor: pointer;
     border-radius: 4px;
     transition: all 0.2s ease;
-    min-width: 48px;
-    min-height: 48px;
-    .mobile-nav-toggle:hover { border-color: var(--accent); }
-    .mobile-nav-toggle:active { background: rgba(200,255,0,0.1); }
   }
   .mobile-nav-toggle span {
     display: block;
@@ -167,13 +162,12 @@
     color: var(--text);
     font-family: var(--font-mono);
     font-size: clamp(0.65rem, 1.2vw, 0.72rem);
-      min-height: 44px;
-      display: flex;
-      align-items: center;
     letter-spacing: 0.12em;
     text-transform: uppercase;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
   }
-  .mobile-nav-panel a:last-child { border-bottom: none; }
   body.menu-open .mobile-nav-panel { display: block; }
   body.menu-open .mobile-nav-toggle span:nth-child(1) { transform: translateY(4.5px) rotate(45deg); }
   body.menu-open .mobile-nav-toggle span:nth-child(2) { opacity: 0; }
@@ -225,8 +219,6 @@
     justify-content: center;
   }
   .hero-cta:hover { background: #fff; transform: translate(-3px, -3px); box-shadow: 3px 3px 0 var(--accent); }
-  .hero-cta svg { transition: transform 0.3s; }
-  .hero-cta:hover svg { transform: translateX(4px); }
   .hero-scroll {
     position: absolute; bottom: clamp(20px, 3vh, 40px); right: clamp(16px, 4vw, 40px);
     font-family: var(--font-mono); font-size: 0.6rem; color: var(--muted);
@@ -253,7 +245,7 @@
     margin-bottom: clamp(40px, 8vh, 64px);
   }
 
-  /* ABOUT / PROFILE */
+  /* ABOUT */
   #about { background: var(--surface); }
   .about-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(40px, 8vw, 80px); align-items: start; }
   .about-photo-wrap { position: relative; }
@@ -273,7 +265,6 @@
     background: rgba(8,8,8,0.8); padding: 6px 12px;
     border: 1px solid var(--accent);
   }
-  .about-content {}
   .about-bio {
     font-size: clamp(0.95rem, 2vw, 1.05rem); line-height: 1.8; color: #aaa; margin-bottom: clamp(24px, 4vh, 40px);
   }
@@ -298,16 +289,7 @@
     transition: all 0.3s;
     position: relative; overflow: hidden;
   }
-  .edu-item::before {
-    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 0;
-    background: var(--accent); opacity: 0.04; transition: width 0.4s;
-  }
-  .edu-item:hover::before { width: 100%; }
-  .edu-year { 
-    font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted);
-    letter-spacing: 0.1em;
-    font-size: clamp(0.6rem, 1vw, 0.7rem);
-  }
+  .edu-year { font-family: var(--font-mono); color: var(--muted); letter-spacing: 0.1em; font-size: clamp(0.6rem, 1vw, 0.7rem); }
   .edu-info h3 {
     font-family: var(--font-display); font-weight: 700;
     font-size: clamp(1rem, 2.5vw, 1.3rem); color: var(--text); margin-bottom: clamp(2px, 1vh, 4px);
@@ -330,30 +312,28 @@
     transition: background 0.3s;
     position: relative; overflow: hidden;
   }
-  .skill-cell::after {
-    content: attr(data-skill);
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%, -50%) scale(3);
-    font-family: var(--font-display); font-weight: 800;
-    font-size: clamp(2rem, 8vw, 4rem); color: var(--accent); opacity: 0;
-    pointer-events: none; transition: all 0.4s; letter-spacing: -0.05em;
-  }
   .skill-cell:hover { background: var(--surface2); }
-  .skill-cell:hover::after { opacity: 0.06; transform: translate(-50%,-50%) scale(1); }
-  .skill-cell img { width: clamp(36px, 8vw, 44px); height: clamp(36px, 8vw, 44px); object-fit: contain; filter: brightness(0.9); transition: transform 0.3s, filter 0.3s; }
-  .skill-cell:hover img { transform: translateY(-6px) scale(1.1); filter: brightness(1.1); }
+  .skill-cell img { width: clamp(36px, 8vw, 44px); height: clamp(36px, 8vw, 44px); object-fit: contain; filter: brightness(0.9); transition: transform 0.3s; }
+  .skill-cell:hover img { transform: translateY(-6px) scale(1.1); }
   .skill-name { font-family: var(--font-mono); font-size: clamp(0.55rem, 1.2vw, 0.65rem); color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; text-align: center; }
-  .linux-icon { font-size: 2.4rem; line-height: 1; }
 
-  /* CERTIFICATIONS */
-  #certifications { background: var(--bg); }
-  .certs-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: clamp(40px, 8vh, 64px); gap: clamp(16px, 4vw, 32px); flex-wrap: wrap; }
-  .cert-count {
-    font-family: var(--font-display); font-weight: 800;
-    font-size: clamp(3rem, 10vw, 5rem); color: transparent;
-    -webkit-text-stroke: 1px rgba(255,255,255,0.15);
-    line-height: 1;
+  /* VAULT OVERLAY STYLES */
+  #certs-overlay {
+    position: fixed; inset: 0; background: var(--bg);
+    z-index: 250; overflow-y: auto;
+    transform: translateY(100%); transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
   }
+  #certs-overlay.open { transform: translateY(0); }
+  .certs-inner { max-width: 1200px; margin: 0 auto; padding: clamp(40px, 8vh, 80px) clamp(16px, 4vw, 40px); }
+  .certs-back {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    background: none; border: none; cursor: pointer; margin-bottom: clamp(40px, 8vh, 60px);
+    transition: color 0.2s; min-height: 40px;
+  }
+  .certs-back:hover { color: var(--accent); }
+  
   .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; background: var(--border); }
   .cert-card {
     background: var(--surface);
@@ -369,67 +349,41 @@
   }
   .cert-card:hover::before { height: 100%; }
   .cert-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: clamp(12px, 2vh, 16px); gap: 8px; flex-wrap: wrap; }
-  .cert-node { font-family: var(--font-mono); font-size: clamp(0.55rem, 1vw, 0.6rem); color: var(--muted); white-space: nowrap; }
-  .cert-date { font-family: var(--font-mono); font-size: clamp(0.55rem, 1vw, 0.6rem); color: var(--muted); white-space: nowrap; }
-  .cert-name {
-    font-family: var(--font-display); font-weight: 700;
-    font-size: clamp(0.85rem, 1.8vw, 0.95rem); color: var(--text); line-height: 1.3; flex: 1;
-  }
+  .cert-node, .cert-date { font-family: var(--font-mono); font-size: clamp(0.55rem, 1vw, 0.6rem); color: var(--muted); white-space: nowrap; }
+  .cert-name { font-family: var(--font-display); font-weight: 700; font-size: clamp(0.85rem, 1.8vw, 0.95rem); color: var(--text); line-height: 1.3; }
   .cert-issuer { font-family: var(--font-mono); font-size: clamp(0.55rem, 1vw, 0.6rem); color: var(--muted); margin-top: clamp(4px, 1vh, 8px); letter-spacing: 0.1em; }
   .cert-verify {
     margin-top: clamp(12px, 2vh, 20px); display: inline-flex; align-items: center; gap: 6px;
     font-family: var(--font-mono); font-size: 0.6rem;
     color: var(--accent); text-decoration: none; letter-spacing: 0.1em;
     border-bottom: 1px solid transparent; transition: border-color 0.2s;
-    width: fit-content;
-    padding: 4px 0;
-    min-height: 32px;
-    display: flex;
-    align-items: center;
   }
   .cert-verify:hover { border-color: var(--accent); }
 
-  /* PROJECTS */
-  #projects { background: var(--surface); }
-  .projects-cta {
+  /* PROJECTS STYLE TRIGGER (Used for Certifications Vault) */
+  .vault-cta, .projects-cta {
     border: 1px solid var(--border); padding: clamp(24px, 6vh, 60px);
     display: flex; align-items: center; justify-content: space-between;
     transition: border-color 0.3s; text-decoration: none; gap: 32px;
-    flex-wrap: wrap;
+    flex-wrap: wrap; background: none; width: 100%; text-align: left; cursor: pointer;
   }
-  .projects-cta:hover { border-color: rgba(255,255,255,0.3); }
-  .projects-cta:hover .cta-arrow { transform: translate(6px, -6px); }
-  .cta-text h3 {
-    font-family: var(--font-display); font-weight: 800;
-    font-size: clamp(1.6rem, 5vw, 2.8rem); color: var(--text); line-height: 1.1;
-  }
+  .vault-cta:hover, .projects-cta:hover { border-color: rgba(255,255,255,0.3); }
+  .cta-text h3 { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.6rem, 5vw, 2.8rem); color: var(--text); line-height: 1.1; }
   .cta-text p { font-family: var(--font-mono); font-size: clamp(0.6rem, 1.2vw, 0.7rem); color: var(--muted); margin-top: clamp(8px, 1.5vh, 12px); }
   .cta-arrow {
     width: clamp(60px, 12vw, 80px); height: clamp(60px, 12vw, 80px); border: 1px solid var(--border);
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0; transition: transform 0.3s; color: var(--text);
-    min-width: 60px;
-    min-height: 60px;
   }
+  .vault-cta:hover .cta-arrow, .projects-cta:hover .cta-arrow { transform: translate(6px, -6px); }
 
   /* BLOG */
   #blog { background: var(--bg); }
-  .blog-card {
-    border: 1px solid var(--border); padding: clamp(24px, 5vh, 56px);
-    transition: border-color 0.3s; cursor: pointer;
-  }
+  .blog-card { border: 1px solid var(--border); padding: clamp(24px, 5vh, 56px); transition: border-color 0.3s; cursor: pointer; }
   .blog-card:hover { border-color: rgba(255,255,255,0.2); }
-  .blog-tag {
-    font-family: var(--font-mono); font-size: clamp(0.55rem, 1vw, 0.6rem); color: var(--accent);
-    letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 24px;
-    display: flex; align-items: center; gap: 8px;
-  }
+  .blog-tag { font-family: var(--font-mono); font-size: clamp(0.55rem, 1vw, 0.6rem); color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 24px; display: flex; align-items: center; gap: 8px; }
   .blog-tag::before { content: ''; width: 20px; height: 1px; background: var(--accent); }
-  .blog-title {
-    font-family: var(--font-display); font-weight: 800;
-    font-size: clamp(1.6rem, 5vw, 3.2rem); color: var(--text);
-    line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 24px;
-  }
+  .blog-title { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.6rem, 5vw, 3.2rem); color: var(--text); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 24px; }
   .blog-excerpt { font-size: clamp(0.9rem, 1.8vw, 1rem); color: var(--muted); line-height: 1.7; max-width: 600px; }
   .blog-meta { margin-top: 40px; display: flex; gap: 32px; align-items: center; }
   .blog-meta span { font-family: var(--font-mono); font-size: clamp(0.6rem, 1vw, 0.65rem); color: var(--muted); }
@@ -438,9 +392,6 @@
     font-size: clamp(0.65rem, 1.2vw, 0.75rem); letter-spacing: 0.1em; text-transform: uppercase;
     color: var(--text); background: none; border: 1px solid var(--border);
     padding: clamp(8px, 1.5vh, 10px) clamp(14px, 2.5vw, 20px); cursor: pointer; transition: all 0.3s;
-      min-height: 40px;
-      min-width: 120px;
-      justify-content: center;
     display: flex; align-items: center; gap: 8px;
   }
   .read-more:hover { border-color: var(--accent); color: var(--accent); }
@@ -453,257 +404,44 @@
   }
   #article-overlay.open { transform: translateY(0); }
   .article-inner { max-width: 760px; margin: 0 auto; padding: clamp(40px, 8vh, 80px) clamp(16px, 4vw, 40px) clamp(80px, 12vh, 120px); }
-  .article-back {
-    display: inline-flex; align-items: center; gap: 10px;
-    font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted);
-    letter-spacing: 0.1em; text-transform: uppercase;
-    background: none; border: none; cursor: pointer; margin-bottom: clamp(40px, 8vh, 60px);
-      padding: 8px 0;
-      min-height: 40px;
-    transition: color 0.2s;
-  }
-  .article-back:hover { color: var(--accent); }
-  .article-back svg { transition: transform 0.2s; }
-  .article-back:hover svg { transform: translateX(-4px); }
-  .article-title {
-    font-family: var(--font-display); font-weight: 800;
-    font-size: clamp(1.8rem, 6vw, 3.2rem); color: var(--text);
-    line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 16px;
-  }
+  .article-back { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; background: none; border: none; cursor: pointer; margin-bottom: clamp(40px, 8vh, 60px); }
+  .article-title { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.8rem, 6vw, 3.2rem); color: var(--text); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 16px; }
   .article-subtitle { font-family: var(--font-mono); font-size: clamp(0.65rem, 1.2vw, 0.75rem); color: var(--accent); letter-spacing: 0.15em; margin-bottom: clamp(32px, 6vh, 48px); }
   .article-body { color: #aaa; font-size: 1.05rem; line-height: 1.85; }
-  .article-body h2 {
-    font-family: var(--font-display); font-weight: 700;
-    font-size: clamp(1.1rem, 2.5vw, 1.3rem); color: var(--text); margin: clamp(24px, 4vh, 48px) 0 clamp(12px, 2vh, 16px);
-    letter-spacing: -0.01em;
-  }
-  .article-body p { margin-bottom: clamp(16px, 2.5vh, 20px); font-size: clamp(0.95rem, 1.8vw, 1.05rem); }
-  .article-body blockquote {
-    border-left: 3px solid var(--accent); padding: 20px 24px;
-    background: var(--surface); margin: 32px 0; font-style: italic;
-    color: #ccc;
-  }
-  .article-body strong { color: var(--text); font-weight: 600; }
-/* CONTACT SECTION - SPLIT LAYOUT */
+  .article-body h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.1rem, 2.5vw, 1.3rem); color: var(--text); margin: clamp(24px, 4vh, 48px) 0 clamp(12px, 2vh, 16px); }
+  .article-body blockquote { border-left: 3px solid var(--accent); padding: 20px 24px; background: var(--surface); margin: 32px 0; font-style: italic; color: #ccc; }
+
+  /* CONTACT */
   #contact { background: var(--bg); padding: 120px 40px; }
-  
-  .contact-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: clamp(40px, 8vw, 80px);
-    align-items: flex-start;
-  }
-
-  /* Left Side Styles */
-  .contact-left { position: relative; }
-  .contact-decoration {
-    display: flex;
-    align-items: center;
-    gap: clamp(10px, 2vw, 15px);
-    margin-bottom: 30px;
-  }
-  .contact-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; }
-  .contact-ring { width: 24px; height: 24px; border: 1px solid var(--accent); border-radius: 50%; opacity: 0.5; }
-
-  .contact-title-large {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: clamp(2rem, 6vw, 4rem);
-    line-height: 1.1;
-    color: #ffffff;
-    margin-bottom: clamp(20px, 4vh, 32px);
-  }
-  .contact-desc {
-    color: var(--muted);
-    font-size: clamp(0.95rem, 2vw, 1.1rem);
-    line-height: 1.7;
-    max-width: clamp(350px, 90vw, 450px);
-    margin-bottom: 48px;
-  }
-
-  /* Right Side Styles */
-  .contact-list { display: flex; flex-direction: column; }
-  
-  .contact-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding: clamp(16px, 2.5vh, 24px) 0;
-      min-height: 60px;
-      align-items: center;
-      gap: 12px;
-    border-bottom: 1px solid var(--border);
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-
+  .contact-wrapper { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(40px, 8vw, 80px); align-items: flex-start; }
+  .contact-title-large { font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 6vw, 4rem); line-height: 1.1; color: #ffffff; margin-bottom: clamp(20px, 4vh, 32px); }
+  .contact-desc { color: var(--muted); font-size: clamp(0.95rem, 2vw, 1.1rem); line-height: 1.7; max-width: clamp(350px, 90vw, 450px); margin-bottom: 48px; }
+  .contact-item { display: flex; justify-content: space-between; align-items: center; padding: clamp(16px, 2.5vh, 24px) 0; border-bottom: 1px solid var(--border); text-decoration: none; transition: all 0.3s ease; }
   .contact-item:hover { border-bottom-color: var(--accent); }
-  .contact-item:hover .item-value { color: var(--text); }
-  .contact-item:hover .item-arrow { transform: translate(4px, -4px); color: var(--accent); }
-
-  .item-label {
-    font-family: var(--font-mono);
-    font-size: clamp(0.6rem, 1vw, 0.65rem);
-    color: var(--muted);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-  .item-value {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: clamp(1rem, 2.5vw, 1.4rem);
-    color: #888; /* Slightly dimmed until hover */
-    transition: color 0.3s ease;
-    overflow-wrap: anywhere;
-    word-break: break-word;
-  }
-  .item-arrow { color: #444; transition: all 0.3s ease; }
-
-  /* New Resume Button Style */
-  .btn-resume-framed {
-    display: inline-flex;
-    align-items: center;
-    gap: clamp(8px, 1.5vw, 12px);
-    padding: clamp(14px, 2.5vh, 18px) clamp(20px, 4vw, 32px);
-    border: 1px solid var(--border);
-    color: #ffffff;
-    font-family: var(--font-mono);
-    font-size: clamp(0.65rem, 1.2vw, 0.75rem);
-      min-height: 48px;
-      min-width: 140px;
-      justify-content: center;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    text-decoration: none;
-    transition: all 0.3s;
-  }
+  .item-label { font-family: var(--font-mono); font-size: clamp(0.6rem, 1vw, 0.65rem); color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; }
+  .item-value { font-family: var(--font-display); font-weight: 600; font-size: clamp(1rem, 2.5vw, 1.4rem); color: #888; transition: color 0.3s ease; }
+  .btn-resume-framed { display: inline-flex; align-items: center; gap: clamp(8px, 1.5vw, 12px); padding: clamp(14px, 2.5vh, 18px) clamp(20px, 4vw, 32px); border: 1px solid var(--border); color: #ffffff; font-family: var(--font-mono); font-size: clamp(0.65rem, 1.2vw, 0.75rem); text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; transition: all 0.3s; }
   .btn-resume-framed:hover { border-color: var(--accent); color: var(--accent); }
 
-  /* Laptop Fix */
-  @media (max-width: 1024px) {
-    .nav-links { display: none; }
-    .nav-status { display: none; }
-    .mobile-nav-toggle { display: inline-flex; }
-    nav { padding: 14px 16px; }
-    .mobile-nav-panel { top: 72px; }
-    .contact-wrapper { grid-template-columns: 1fr; gap: 48px; }
-    .contact-title-large { font-size: clamp(2.2rem, 8vw, 3.1rem); }
-    .contact-desc { margin-bottom: 36px; }
-  }
   /* FOOTER */
-  footer { 
-    padding: clamp(20px, 3vh, 32px) clamp(16px, 4vw, 40px); border-top: 1px solid var(--border);
-      flex-wrap: wrap;
-      gap: clamp(12px, 2vh, 20px);
-    display: flex; align-items: center; justify-content: space-between;
-    position: relative; z-index: 1;
-  }
+  footer { padding: clamp(20px, 3vh, 32px) clamp(16px, 4vw, 40px); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 1; flex-wrap: wrap; gap: 12px; }
   footer p { font-family: var(--font-mono); font-size: clamp(0.55rem, 0.9vw, 0.6rem); color: var(--muted); letter-spacing: 0.1em; }
 
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .reveal {
-    opacity: 0; transform: translateY(40px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
+  /* REVEAL */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  /* MOBILE */
   @media (max-width: 1024px) {
-    /* Laptop adjustments */
-    section { padding: clamp(48px, 8vh, 90px) 20px; }
-    #hero { padding: clamp(84px, 12vh, 110px) 20px clamp(40px, 6vh, 56px); }
-    .about-grid { gap: clamp(32px, 6vw, 60px); }
-    .edu-item { grid-template-columns: clamp(50px, 12vw, 80px) 1fr; gap: clamp(16px, 3vw, 24px); }
-    .certs-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .nav-links, .nav-status { display: none; }
+    .mobile-nav-toggle { display: inline-flex; }
+    .contact-wrapper { grid-template-columns: 1fr; }
   }
-
   @media (max-width: 768px) {
+    .cursor, .cursor-ring, #bg-canvas { display: none; }
     body { cursor: auto; }
-    .cursor, .cursor-ring { display: none; }
-    #bg-canvas { display: none; }
-    .container { padding: 0 16px; }
-    #hero { padding: 84px 16px 34px; min-height: auto; }
-    .hero-title { font-size: clamp(2rem, 12vw, 3.2rem); line-height: 1; }
-    .hero-scroll { display: none; }
-    section { padding: 52px 16px; }
-    .section-title { margin-bottom: 28px; }
-    .about-grid { grid-template-columns: 1fr; gap: 28px; }
-    .about-photo-wrap { max-width: 420px; }
-    .about-stats { grid-template-columns: 1fr; gap: 12px; }
-    .edu-item { grid-template-columns: clamp(50px, 15vw, 70px) 1fr; gap: clamp(12px, 2vw, 18px); padding: clamp(16px, 2vh, 24px) 0; }
-    .edu-badge { display: none; }
-    .skills-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
-    .certs-grid { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
-    .cert-count { font-size: clamp(2.5rem, 8vw, 3.2rem); }
-    .certs-header { flex-direction: column; align-items: flex-start; }
-    .projects-cta { flex-direction: column; padding: clamp(20px, 4vh, 32px); align-items: stretch; }
-    .cta-arrow { margin: 0 auto; }
-    #contact { padding: 56px 16px; }
-    .contact-wrapper { grid-template-columns: 1fr; gap: clamp(24px, 4vh, 36px); }
-    .contact-item {
-      align-items: center;
-      padding: clamp(14px, 2vh, 18px) 0;
-      gap: 12px;
-    }
-    .item-logo { height: clamp(20px, 4vw, 24px); }
-    .item-label { font-size: clamp(0.55rem, 1vw, 0.62rem); letter-spacing: 0.12em; }
-    .item-value { font-size: clamp(0.8rem, 2vw, 0.85rem); word-break: break-word; }
-    .item-arrow { width: 20px; height: 20px; }
-    .hero-sub { flex-direction: column; gap: 24px; }
-    .hero-sub p { max-width: 100%; }
-    footer { flex-direction: column; gap: 12px; text-align: center; }
-    .blog-card { padding: 32px 24px; }
-    .blog-meta { flex-wrap: wrap; gap: clamp(10px, 2vw, 14px); flex-direction: column; align-items: flex-start; }
-    .read-more { margin-left: 0; }
-  }
-
-  @media (max-width: 480px) {
-    .container { padding: 0 14px; }
-    #hero { padding: 76px 14px 26px; }
-    section { padding: 42px 14px; }
-    .hero-tag { font-size: clamp(0.55rem, 0.9vw, 0.6rem); letter-spacing: 0.12em; }
-    .hero-title { font-size: clamp(1.8rem, 12vw, 2.8rem); }
-    .hero-cta { width: 100%; justify-content: center; }
-    .hero-sub { gap: clamp(16px, 3vh, 20px); }
-    .section-title { font-size: clamp(1.6rem, 5vw, 2.2rem); margin-bottom: clamp(24px, 4vh, 32px); }
-    .about-stats { gap: 8px; }
-    .skill-cell { padding: clamp(16px, 4vh, 24px) 12px; }
-    .cert-count { font-size: clamp(2rem, 8vw, 2.4rem); }
-    .projects-cta { padding: clamp(16px, 3vh, 20px); gap: clamp(12px, 2vh, 16px); }
-    .cta-text h3 { font-size: clamp(1.3rem, 4vw, 1.8rem); }
-    .cta-arrow { width: clamp(50px, 10vw, 60px); height: clamp(50px, 10vw, 60px); }
-    .contact-wrapper { gap: clamp(20px, 3vh, 24px); }
-    .contact-title-large { font-size: clamp(1.6rem, 5vw, 2rem); }
-    .skills-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
-    .certs-grid { grid-template-columns: 1fr; }
-    .btn-resume-framed { width: 100%; justify-content: center; }
-    .blog-card { padding: clamp(18px, 3vh, 24px) 16px; }
-    .blog-title { font-size: clamp(1.4rem, 4vw, 1.8rem); }
-    .article-inner { padding: clamp(32px, 6vh, 56px) 16px clamp(60px, 10vh, 90px); }
-    .article-title { font-size: clamp(1.6rem, 5vw, 2rem); }
-    footer { font-size: clamp(0.5rem, 0.8vw, 0.55rem); }
-  }
-
-  @media (max-width: 360px) {
-    /* Extra small devices (small phones) */
-    body { font-size: 14px; }
-    #hero { padding: clamp(50px, 8vh, 60px) 12px clamp(24px, 4vh, 32px); }
-    section { padding: clamp(32px, 6vh, 48px) 12px; }
-    .hero-title { font-size: clamp(1.6rem, 10vw, 2.2rem); letter-spacing: -0.02em; }
-    .section-title { font-size: clamp(1.4rem, 4vw, 1.8rem); margin-bottom: clamp(16px, 3vh, 24px); }
-    .nav-logo { font-size: clamp(0.8rem, 2vw, 0.9rem); }
-    .mobile-nav-toggle { width: 40px; height: 40px; }
-    .mobile-nav-panel { padding: 10px; }
-    .about-stats { grid-template-columns: 1fr; }
-    .stat-card { padding: clamp(12px, 2vh, 16px); }
-    .stat-num { font-size: clamp(1.4rem, 3vw, 1.8rem); }
-    .container { padding: 0 12px; }
-    .item-value { font-size: clamp(0.75rem, 1.5vw, 0.8rem); }
+    .hero-title { font-size: clamp(2rem, 12vw, 3.2rem); }
+    .about-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -720,7 +458,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#education">Education</a></li>
     <li><a href="#skills">Skills</a></li>
-    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#vault-section">Certs</a></li>
     <li><a href="#projects">Work</a></li>
     <li><a href="#blog">Blog</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -730,16 +468,15 @@
     NIE MYSORE // AI&ML
   </div>
   <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-    <span></span>
-    <span></span>
-    <span></span>
+    <span></span><span></span><span></span>
   </button>
 </nav>
+
 <div class="mobile-nav-panel" id="mobile-nav-panel">
   <a href="#about">About</a>
   <a href="#education">Education</a>
   <a href="#skills">Skills</a>
-  <a href="#certifications">Certs</a>
+  <a href="#vault-section">Certs</a>
   <a href="#projects">Work</a>
   <a href="#blog">Blog</a>
   <a href="#contact">Contact</a>
@@ -857,166 +594,26 @@
         <img src="https://cdn.simpleicons.org/n8n/FF6D5B" alt="n8n"/>
         <span class="skill-name">n8n Automation</span>
       </div>
-      
-      
-      
     </div>
   </div>
 </section>
 
-<!-- CERTIFICATIONS -->
-<section id="certifications">
+<!-- CERTIFICATIONS VAULT TRIGGER (MATCHES WORK STYLE) -->
+<section id="vault-section">
   <div class="container">
-    <div class="certs-header">
-      <div>
-        <div class="section-label">Credentials</div>
-        <h2 class="section-title" style="margin-bottom:0">Vault<br/>Database.</h2>
+    <div class="section-label">Credentials</div>
+    <h2 class="section-title">Academic<br/>Vault.</h2>
+    <button class="vault-cta reveal" onclick="openCerts()">
+      <div class="cta-text">
+        <h3>Access My 20+ Industry Verified Records</h3>
+        <p>CREDENTIAL_VAULT // TILAKMK // AUTHENTICATED NODES</p>
       </div>
-      <div class="cert-count">20</div>
-    </div>
-    <div class="certs-grid reveal">
-
-      <div class="cert-card">
-        <div><div class="cert-top"><span class="cert-node">NODE_01</span><span class="cert-date">JAN 2026</span></div>
-        <div class="cert-name">Technology Job Simulation</div>
-        <div class="cert-issuer">DELOITTE</div></div>
-        <a class="cert-verify" href="https://tilakmk.github.io/deloitte.pdf" target="_blank">Verify ↗</a>
+      <div class="cta-arrow">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M7 17L17 7M17 7H7M17 7v10"/>
+        </svg>
       </div>
-
-      <div class="cert-card">
-        <div><div class="cert-top"><span class="cert-node">NODE_02</span><span class="cert-date">JAN 2026</span></div>
-        <div class="cert-name">Generative AI Leader</div>
-        <div class="cert-issuer">GOOGLE CLOUD</div></div>
-        <a class="cert-verify" href="https://coursera.org/share/1a03cb91c0d79ae3bf6adee6d4c696c9" target="_blank">Verify ↗</a>
-      </div>
-
-      <div class="cert-card">
-        <div><div class="cert-top"><span class="cert-node">NODE_03</span><span class="cert-date">JAN 2026</span></div>
-        <div class="cert-name">Introduction to Data Science</div>
-        <div class="cert-issuer">CISCO ACADEMY</div></div>
-        <a class="cert-verify" href="https://www.credly.com/badges/f7576388-9656-45b5-91fb-c56b71c932a3/public_url" target="_blank">Verify ↗</a>
-      </div>
-
-      <div class="cert-card">
-        <div><div class="cert-top"><span class="cert-node">NODE_04</span><span class="cert-date">JAN 2026</span></div>
-        <div class="cert-name">Build Your Own Chatbot</div>
-        <div class="cert-issuer">COGNITIVE CLASS</div></div>
-        <a class="cert-verify" href="https://courses.cognitiveclass.ai/certificates/5aefdd55bb0745b0958c6b61e12dad22" target="_blank">Verify ↗</a>
-      </div>
-
-      <div class="cert-card">
-        <div><div class="cert-top"><span class="cert-node">NODE_05</span><span class="cert-date">DEC 2025</span></div>
-        <div class="cert-name">Linux — Skill Up</div>
-        <div class="cert-issuer">GEEKSFORGEEKS</div></div>
-        <a class="cert-verify" href="https://www.geeksforgeeks.org/certificate/490c22021a8b64d862f97ecbb9398b22" target="_blank">Verify ↗</a>
-      </div>
-
-      <div class="cert-card">
-        <div><div class="cert-top"><span class="cert-node">NODE_06</span><span class="cert-date">DEC 2025</span></div>
-        <div class="cert-name">Gemini Certified Student</div>
-        <div class="cert-issuer">GOOGLE</div></div>
-        <a class="cert-verify" href="https://edu.google.accredible.com/eee897b1-7ab7-4644-8a36-16406b4602af" target="_blank">Verify ↗</a>
-      </div>
-
-      <div class="cert-card">
-        <div><div class="cert-top"><span class="cert-node">NODE_07</span><span class="cert-date">NOV 2025</span></div>
-        <div class="cert-name">Gen AI Foundations</div>
-        <div class="cert-issuer">SKILLSOFT</div></div>
-        <a class="cert-verify" href="https://skillsoft.digitalbadges.skillsoft.com/b98653bd-18d2-4337-a2f7-66c66ed59cba" target="_blank">Verify ↗</a>
-      </div>
-
-      <div class="cert-card">
-        <div><div class="cert-top"><span class="cert-node">NODE_08</span><span class="cert-date">DEC 2025</span></div>
-        <div class="cert-name">Intro to AI in Azure</div>
-        <div class="cert-issuer">MICROSOFT</div></div>
-        <a class="cert-verify" href="https://learn.microsoft.com/en-in/users/tilakmk-5814/achievements/cy2ntz39" target="_blank">Verify ↗</a>
-      </div>
-
-      <div class="cert-card">
-        <div><div class="cert-top"><span class="cert-node">NODE_09</span><span class="cert-date">DEC 2025</span></div>
-        <div class="cert-name">Python for Beginners</div>
-        <div class="cert-issuer">SCALER</div></div>
-        <a class="cert-verify" href="https://media.licdn.com/dms/image/v2/D562DAQE7fL_DBbWYNQ/profile-treasury-image-shrink_1280_1280/B56Ztwh0s.K8AQ-/0/1767119474233?e=1774029600&v=beta&t=b-mNg3HB6M4viKc1nIw-vts2i-pFM79JOVVy0F5Zqpc" target="_blank">Verify ↗</a>
-      </div>
-
-      <div class="cert-card">
-        <div><div class="cert-top"><span class="cert-node">NODE_10</span><span class="cert-date">NOV 2025</span></div>
-        <div class="cert-name">Upskilling Org on AI</div>
-        <div class="cert-issuer">LINKEDIN LEARNING</div></div>
-        <a class="cert-verify" href="https://media.licdn.com/dms/image/v2/D4E2DAQEeHE54T4bJMA/profile-treasury-document-images_1280/B4EZp9bCXdIQAU-/1/1763040832429?e=1774483200&v=beta&t=VYAVT40hYhjoMlkwRAJNpSpWC3WPWKUFaX8Wv1KTyJY" target="_blank">Verify ↗</a>
-      </div>
-
-      <div class="cert-card">
-        <div><div class="cert-top"><span class="cert-node">NODE_11</span><span class="cert-date">NOV 2025</span></div>
-        <div class="cert-name">Intro to Artificial Intelligence</div>
-        <div class="cert-issuer">IBM</div></div>
-        <a class="cert-verify" href="https://www.coursera.org/account/accomplishments/verify/TOG676VWGC00" target="_blank">Verify ↗</a>
-      </div>
-
-      <div class="cert-card">
-        <div><div class="cert-top"><span class="cert-node">NODE_12</span><span class="cert-date">NOV 2025</span></div>
-        <div class="cert-name">Intro to Generative AI</div>
-        <div class="cert-issuer">AMAZON (AWS)</div></div>
-        <a class="cert-verify" href="https://media.licdn.com/dms/image/v2/D4E2DAQFHWa156n9tlA/profile-treasury-document-images_1280/B4EZpzJE5HKcAY-/1/1762868353188?e=1774483200&v=beta&t=sTuXPIId40_ET5mkiWrXOCbC9d2MBSWaj0XXvhdaX_s" target="_blank">Verify ↗</a>
-      </div>
-
-      <div class="cert-card">
-        <div><div class="cert-top"><span class="cert-node">NODE_13</span><span class="cert-date">NOV 2025</span></div>
-        <div class="cert-name">Innovating with Cloud AI</div>
-        <div class="cert-issuer">GOOGLE CLOUD TRAINING</div></div>
-        <a class="cert-verify" href="https://media.licdn.com/dms/image/v2/D4E2DAQFdsf3kctHKqA/profile-treasury-document-images_1280/B4EZpuCAbmGUAU-/1/1762782615743?e=1774483200&v=beta&t=OKKuEsEbQ_1tS-eIj7FRVpE5xr36gvmJ33bkcKYpszI" target="_blank">Verify ↗</a>
-      </div>
-
-      <div class="cert-card">
-        <div><div class="cert-top"><span class="cert-node">NODE_14</span><span class="cert-date">NOV 2025</span></div>
-        <div class="cert-name">Cybersecurity Analyst</div>
-        <div class="cert-issuer">FORAGE</div></div>
-        <a class="cert-verify" href="https://www.theforage.com/completion-certificates/ifobHAoMjQs9s6bKS/gmf3ypEXBj2wvfQWC_ifobHAoMjQs9s6bKS_69107c35188b9e61c06e2ab0_1762689116844_completion_certificate.pdf" target="_blank">Verify ↗</a>
-      </div>
-
-      <div class="cert-card">
-        <div><div class="cert-top"><span class="cert-node">NODE_15</span><span class="cert-date">NOV 2025</span></div>
-        <div class="cert-name">AI for Beginners</div>
-        <div class="cert-issuer">HP LIFE</div></div>
-        <a class="cert-verify" href="https://www.life-global.org/certificate/4305c8e9-4e6f-473e-94fc-8c6808cd6c4e" target="_blank">Verify ↗</a>
-      </div>
-
-      <div class="cert-card">
-        <div><div class="cert-top"><span class="cert-node">NODE_16</span><span class="cert-date">NOV 2025</span></div>
-        <div class="cert-name">AI for All: Basics to GenAI</div>
-        <div class="cert-issuer">NVIDIA</div></div>
-        <a class="cert-verify" href="https://media.licdn.com/dms/image/v2/D4E2DAQHPBOdAd0TbNQ/profile-treasury-document-images_1280/B4EZpkz7_uHMAY-/1/1762627930253?e=1774483200&v=beta&t=gRfTVA9Zd_Bg0C-bkGl05zaxslkGcYcDevvKgxS8Q6Y" target="_blank">Verify ↗</a>
-      </div>
-
-      <div class="cert-card">
-        <div><div class="cert-top"><span class="cert-node">NODE_17</span><span class="cert-date">2025</span></div>
-        <div class="cert-name">CCSA Program</div>
-        <div class="cert-issuer">CYBERVERSE FOUNDATION</div></div>
-        <a class="cert-verify" href="https://drive.google.com/file/d/11COziTsUH75s-2YHtB2pyS5_tmPOyqOo/view" target="_blank">Verify ↗</a>
-      </div>
-
-      <div class="cert-card">
-        <div><div class="cert-top"><span class="cert-node">NODE_18</span><span class="cert-date">AUG 2025</span></div>
-        <div class="cert-name">Data Structures</div>
-        <div class="cert-issuer">UC SAN DIEGO</div></div>
-        <a class="cert-verify" href="https://www.coursera.org/account/accomplishments/verify/HC88O4AGJETE" target="_blank">Verify ↗</a>
-      </div>
-
-      <div class="cert-card">
-        <div><div class="cert-top"><span class="cert-node">NODE_19</span><span class="cert-date">AUG 2025</span></div>
-        <div class="cert-name">AI for Everyone</div>
-        <div class="cert-issuer">DEEPLEARNING.AI</div></div>
-        <a class="cert-verify" href="https://www.coursera.org/account/accomplishments/verify/IUT201KR3GP9" target="_blank">Verify ↗</a>
-      </div>
-
-      <div class="cert-card">
-        <div><div class="cert-top"><span class="cert-node">NODE_20</span><span class="cert-date">OCT 2025</span></div>
-        <div class="cert-name">OCI AI Foundations Associate</div>
-        <div class="cert-issuer">ORACLE</div></div>
-        <a class="cert-verify" href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=2328B7C8F098A4D8352B3D004BD7E66D4585AD745ACDA55FDDDBDD6C06488B26" target="_blank">Verify ↗</a>
-      </div>
-
-    </div>
+    </button>
   </div>
 </section>
 
@@ -1062,104 +659,188 @@
     </div>
   </div>
 </section>
-<!-- CONTACT SECTION -->
+
+<!-- CONTACT -->
 <section id="contact">
   <div class="container">
     <div class="contact-wrapper">
-      
-      <!-- LEFT COLUMN -->
       <div class="contact-left reveal">
-        <div class="contact-decoration">
-            <div class="contact-dot"></div>
-            <div class="contact-ring"></div>
-            <div class="section-label" style="margin-bottom: 0;">Contact</div>
-        </div>
+        <div class="section-label">Contact</div>
         <h2 class="contact-title-large">Let's Build Something Together.</h2>
         <p class="contact-desc">Open to collaborations, internships, and interesting AI/ML projects. Drop a message anytime.</p>
-        
-        <a href="https://tilakmk.github.io/my-resume.pdf" class="btn-resume-framed" target="_blank">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3M6 9l6 6 6-6M5 19h14"/></svg>
-            Download Resume
-        </a>
+        <a href="https://tilakmk.github.io/my-resume.pdf" class="btn-resume-framed" target="_blank">Download Resume</a>
       </div>
-
-      <!-- RIGHT COLUMN -->
       <div class="contact-list reveal" style="transition-delay: 0.2s;">
-        
-        <!-- Gmail (Logo Only) -->
         <a href="mailto:tilakbhat098@gmail.com" class="contact-item">
           <img src="https://cdn.simpleicons.org/gmail" class="item-logo" alt="Gmail">
-           <div>
-              <div class="item-label">GMAIL</div>
-              
-            </div>
+          <div><div class="item-label">GMAIL</div></div>
           <svg class="item-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
         </a>
-
-       <!-- LinkedIn -->
-      <a href="https://www.linkedin.com/in/tilak-m-k-a2408635a/" target="_blank" rel="noopener noreferrer" class="contact-item">
-  <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Linkedin-png-linkedin-icon-1600.png" class="item-logo" alt="LinkedIn">
-        <div>
-          <div class="item-label">LinkedIn</div>
-        </div>
-  <svg class="item-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-    <path d="M7 17L17 7M17 7H7M17 7v10"/>
-  </svg>
-</a>
-        <!-- GitHub (Logo Only) -->
+        <a href="https://www.linkedin.com/in/tilak-m-k-a2408635a/" target="_blank" class="contact-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" class="item-logo" alt="LinkedIn">
+          <div><div class="item-label">LinkedIn</div></div>
+          <svg class="item-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </a>
         <a href="https://github.com/TILAKMK" target="_blank" class="contact-item">
           <img src="https://cdn.simpleicons.org/github" class="item-logo" alt="GitHub">
-           <div>
-              <div class="item-label">GitHub</div>
-              
-            </div>
-
+          <div><div class="item-label">GitHub</div></div>
           <svg class="item-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
         </a>
-
-      <!-- X / Twitter (Logo Only) -->
-  <a href="https://x.com/TilakBhat52987" target="_blank" class="contact-item">
-    <img src="https://cdn.simpleicons.org/x/white" class="item-logo" alt="X">
-     <div>
-              <div class="item-label">X</div>
-              
-            </div>
-    <svg class="item-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-  </a>
-
-        <!-- Discord (Logo + ID) -->
+        <a href="https://x.com/TilakBhat52987" target="_blank" class="contact-item">
+          <img src="https://cdn.simpleicons.org/x/white" class="item-logo" alt="X">
+          <div><div class="item-label">X</div></div>
+          <svg class="item-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </a>
         <a href="https://discord.com/users/1372154617881694250" target="_blank" class="contact-item">
           <div class="discord-wrapper">
             <img src="https://cdn.simpleicons.org/discord" class="item-logo" alt="Discord">
-            <div>
-              </div>
-            <div>
-              </div>
-              <div>
-              </div>
-              <div>
-              </div>
-              <div>
-              </div>
-              <div>
-              </div>
-            
-            
-            <div class="item-value" style="color: #aba6a6; font-size: 0.9rem;">ID:1372154617881694250   </div>
+            <div class="item-value" style="color: #aba6a6; font-size: 0.9rem;">ID:1372154617881694250</div>
           </div>
           <svg class="item-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
         </a>
-
       </div>
     </div>
   </div>
 </section>
+
 <footer>
   <p>© 2026 TILAK M K // STUDENT AT NIE MYSORE // AI & ML UNIT</p>
   <p>DESIGNED BY ME // BUILT WITH PURPOSE</p>
 </footer>
 
-<!-- ARTICLE OVERLAY -->
+<!-- CERTIFICATIONS VAULT OVERLAY -->
+<div id="certs-overlay">
+  <div class="certs-inner">
+    <button class="certs-back" onclick="closeCerts()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      RETURN TO BASE
+    </button>
+    <div class="certs-grid">
+      <div class="cert-card">
+        <div class="cert-top"><span class="cert-node">NODE_01</span><span class="cert-date">JAN 2026</span></div>
+        <div class="cert-name">Technology Job Simulation</div>
+        <div class="cert-issuer">DELOITTE</div>
+        <a class="cert-verify" href="https://tilakmk.github.io/deloitte.pdf" target="_blank">Verify ↗</a>
+      </div>
+      <div class="cert-card">
+        <div class="cert-top"><span class="cert-node">NODE_02</span><span class="cert-date">JAN 2026</span></div>
+        <div class="cert-name">Generative AI Leader</div>
+        <div class="cert-issuer">GOOGLE CLOUD</div>
+        <a class="cert-verify" href="https://coursera.org/share/1a03cb91c0d79ae3bf6adee6d4c696c9" target="_blank">Verify ↗</a>
+      </div>
+      <div class="cert-card">
+        <div class="cert-top"><span class="cert-node">NODE_03</span><span class="cert-date">JAN 2026</span></div>
+        <div class="cert-name">Introduction to Data Science</div>
+        <div class="cert-issuer">CISCO ACADEMY</div>
+        <a class="cert-verify" href="https://www.credly.com/badges/f7576388-9656-45b5-91fb-c56b71c932a3/public_url" target="_blank">Verify ↗</a>
+      </div>
+      <div class="cert-card">
+        <div class="cert-top"><span class="cert-node">NODE_04</span><span class="cert-date">JAN 2026</span></div>
+        <div class="cert-name">Build Your Own Chatbot</div>
+        <div class="cert-issuer">COGNITIVE CLASS</div>
+        <a class="cert-verify" href="https://courses.cognitiveclass.ai/certificates/5aefdd55bb0745b0958c6b61e12dad22" target="_blank">Verify ↗</a>
+      </div>
+      <div class="cert-card">
+        <div class="cert-top"><span class="cert-node">NODE_05</span><span class="cert-date">DEC 2025</span></div>
+        <div class="cert-name">Linux — Skill Up</div>
+        <div class="cert-issuer">GEEKSFORGEEKS</div>
+        <a class="cert-verify" href="https://www.geeksforgeeks.org/certificate/490c22021a8b64d862f97ecbb9398b22" target="_blank">Verify ↗</a>
+      </div>
+      <div class="cert-card">
+        <div class="cert-top"><span class="cert-node">NODE_06</span><span class="cert-date">DEC 2025</span></div>
+        <div class="cert-name">Gemini Certified Student</div>
+        <div class="cert-issuer">GOOGLE</div>
+        <a class="cert-verify" href="https://edu.google.accredible.com/eee897b1-7ab7-4644-8a36-16406b4602af" target="_blank">Verify ↗</a>
+      </div>
+      <div class="cert-card">
+        <div class="cert-top"><span class="cert-node">NODE_07</span><span class="cert-date">NOV 2025</span></div>
+        <div class="cert-name">Gen AI Foundations</div>
+        <div class="cert-issuer">SKILLSOFT</div>
+        <a class="cert-verify" href="https://skillsoft.digitalbadges.skillsoft.com/b98653bd-18d2-4337-a2f7-66c66ed59cba" target="_blank">Verify ↗</a>
+      </div>
+      <div class="cert-card">
+        <div class="cert-top"><span class="cert-node">NODE_08</span><span class="cert-date">DEC 2025</span></div>
+        <div class="cert-name">Intro to AI in Azure</div>
+        <div class="cert-issuer">MICROSOFT</div>
+        <a class="cert-verify" href="https://learn.microsoft.com/en-in/users/tilakmk-5814/achievements/cy2ntz39" target="_blank">Verify ↗</a>
+      </div>
+      <div class="cert-card">
+        <div class="cert-top"><span class="cert-node">NODE_09</span><span class="cert-date">DEC 2025</span></div>
+        <div class="cert-name">Python for Beginners</div>
+        <div class="cert-issuer">SCALER</div>
+        <a class="cert-verify" href="https://media.licdn.com/dms/image/v2/D562DAQE7fL_DBbWYNQ/profile-treasury-image-shrink_1280_1280/B56Ztwh0s.K8AQ-/0/1767119474233?e=1774029600&v=beta&t=b-mNg3HB6M4viKc1nIw-vts2i-pFM79JOVVy0F5Zqpc" target="_blank">Verify ↗</a>
+      </div>
+      <div class="cert-card">
+        <div class="cert-top"><span class="cert-node">NODE_10</span><span class="cert-date">NOV 2025</span></div>
+        <div class="cert-name">Upskilling Org on AI</div>
+        <div class="cert-issuer">LINKEDIN LEARNING</div>
+        <a class="cert-verify" href="https://media.licdn.com/dms/image/v2/D4E2DAQEeHE54T4bJMA/profile-treasury-document-images_1280/B4EZp9bCXdIQAU-/1/1763040832429?e=1774483200&v=beta&t=VYAVT40hYhjoMlkwRAJNpSpWC3WPWKUFaX8Wv1KTyJY" target="_blank">Verify ↗</a>
+      </div>
+      <div class="cert-card">
+        <div class="cert-top"><span class="cert-node">NODE_11</span><span class="cert-date">NOV 2025</span></div>
+        <div class="cert-name">Intro to Artificial Intelligence</div>
+        <div class="cert-issuer">IBM</div>
+        <a class="cert-verify" href="https://www.coursera.org/account/accomplishments/verify/TOG676VWGC00" target="_blank">Verify ↗</a>
+      </div>
+      <div class="cert-card">
+        <div class="cert-top"><span class="cert-node">NODE_12</span><span class="cert-date">NOV 2025</span></div>
+        <div class="cert-name">Intro to Generative AI</div>
+        <div class="cert-issuer">AMAZON (AWS)</div>
+        <a class="cert-verify" href="https://media.licdn.com/dms/image/v2/D4E2DAQFHWa156n9tlA/profile-treasury-document-images_1280/B4EZpzJE5HKcAY-/1/1762868353188?e=1774483200&v=beta&t=sTuXPIId40_ET5mkiWrXOCbC9d2MBSWaj0XXvhdaX_s" target="_blank">Verify ↗</a>
+      </div>
+      <div class="cert-card">
+        <div class="cert-top"><span class="cert-node">NODE_13</span><span class="cert-date">NOV 2025</span></div>
+        <div class="cert-name">Innovating with Cloud AI</div>
+        <div class="cert-issuer">GOOGLE CLOUD TRAINING</div>
+        <a class="cert-verify" href="https://media.licdn.com/dms/image/v2/D4E2DAQFdsf3kctHKqA/profile-treasury-document-images_1280/B4EZpuCAbmGUAU-/1/1762782615743?e=1774483200&v=beta&t=OKKuEsEbQ_1tS-eIj7FRVpE5xr36gvmJ33bkcKYpszI" target="_blank">Verify ↗</a>
+      </div>
+      <div class="cert-card">
+        <div class="cert-top"><span class="cert-node">NODE_14</span><span class="cert-date">NOV 2025</span></div>
+        <div class="cert-name">Cybersecurity Analyst</div>
+        <div class="cert-issuer">FORAGE</div>
+        <a class="cert-verify" href="https://www.theforage.com/completion-certificates/ifobHAoMjQs9s6bKS/gmf3ypEXBj2wvfQWC_ifobHAoMjQs9s6bKS_69107c35188b9e61c06e2ab0_1762689116844_completion_certificate.pdf" target="_blank">Verify ↗</a>
+      </div>
+      <div class="cert-card">
+        <div class="cert-top"><span class="cert-node">NODE_15</span><span class="cert-date">NOV 2025</span></div>
+        <div class="cert-name">AI for Beginners</div>
+        <div class="cert-issuer">HP LIFE</div>
+        <a class="cert-verify" href="https://www.life-global.org/certificate/4305c8e9-4e6f-473e-94fc-8c6808cd6c4e" target="_blank">Verify ↗</a>
+      </div>
+      <div class="cert-card">
+        <div class="cert-top"><span class="cert-node">NODE_16</span><span class="cert-date">NOV 2025</span></div>
+        <div class="cert-name">AI for All: Basics to GenAI</div>
+        <div class="cert-issuer">NVIDIA</div>
+        <a class="cert-verify" href="https://media.licdn.com/dms/image/v2/D4E2DAQHPBOdAd0TbNQ/profile-treasury-document-images_1280/B4EZpkz7_uHMAY-/1/1762627930253?e=1774483200&v=beta&t=gRfTVA9Zd_Bg0C-bkGl05zaxslkGcYcDevvKgxS8Q6Y" target="_blank">Verify ↗</a>
+      </div>
+      <div class="cert-card">
+        <div class="cert-top"><span class="cert-node">NODE_17</span><span class="cert-date">2025</span></div>
+        <div class="cert-name">CCSA Program</div>
+        <div class="cert-issuer">CYBERVERSE FOUNDATION</div>
+        <a class="cert-verify" href="https://drive.google.com/file/d/11COziTsUH75s-2YHtB2pyS5_tmPOyqOo/view" target="_blank">Verify ↗</a>
+      </div>
+      <div class="cert-card">
+        <div class="cert-top"><span class="cert-node">NODE_18</span><span class="cert-date">AUG 2025</span></div>
+        <div class="cert-name">Data Structures</div>
+        <div class="cert-issuer">UC SAN DIEGO</div>
+        <a class="cert-verify" href="https://www.coursera.org/account/accomplishments/verify/HC88O4AGJETE" target="_blank">Verify ↗</a>
+      </div>
+      <div class="cert-card">
+        <div class="cert-top"><span class="cert-node">NODE_19</span><span class="cert-date">AUG 2025</span></div>
+        <div class="cert-name">AI for Everyone</div>
+        <div class="cert-issuer">DEEPLEARNING.AI</div>
+        <a class="cert-verify" href="https://www.coursera.org/account/accomplishments/verify/IUT201KR3GP9" target="_blank">Verify ↗</a>
+      </div>
+      <div class="cert-card">
+        <div class="cert-top"><span class="cert-node">NODE_20</span><span class="cert-date">OCT 2025</span></div>
+        <div class="cert-name">OCI AI Foundations Associate</div>
+        <div class="cert-issuer">ORACLE</div>
+        <a class="cert-verify" href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=2328B7C8F098A4D8352B3D004BD7E66D4585AD745ACDA55FDDDBDD6C06488B26" target="_blank">Verify ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BLOG OVERLAY -->
 <div id="article-overlay">
   <div class="article-inner">
     <button class="article-back" onclick="closeArticle()">
@@ -1169,32 +850,21 @@
     <h1 class="article-title">Decentralized Computing in the Age of Large Language Models</h1>
     <p class="article-subtitle">A Technical Analysis of Edge Intelligence and Distributed GPU Orchestration</p>
     <div class="article-body">
-      <blockquote>The rapid escalation of LLMs has introduced a computational paradox: while these models offer unprecedented capabilities, their reliance on massive centralized GPU clusters creates a barrier to entry for independent researchers and academic institutions. This paper explores the transition to decentralized architectures.</blockquote>
-
+      <blockquote>The rapid escalation of LLMs has introduced a computational paradox: while these models offer unprecedented capabilities, their reliance on massive centralized GPU clusters creates a barrier to entry for independent researchers and academic institutions.</blockquote>
       <h2>01. The Centralization Bottleneck</h2>
       <p>Current AI development is dominated by a "compute-first" philosophy. State-of-the-art models like GPT-4 or Llama-3 require thousands of specialized H100 GPUs, often costing millions of dollars in infrastructure. This centralization leads to several critical issues: high latency in data transmission, significant subscription costs, and the "black box" nature of proprietary APIs.</p>
-      <p>For a student or an independent developer, relying on these centralized gatekeepers limits the ability to experiment with internal model weights or fine-tune architectures for niche applications. The centralization of compute is not just a financial hurdle — it is a bottleneck for global innovation.</p>
-
       <h2>02. Distributed Inference and Model Sharding</h2>
       <p>To combat centralization, engineers are turning to <strong>Model Sharding</strong>. Instead of loading a 70-billion parameter model into a single high-memory GPU, the model is split into "shards" or layers and distributed across a network of multiple computers.</p>
-      <p>When a query is processed, the computation flows through a "pipeline" across the network — Computer A handles the first 10 layers, passes intermediate data to Computer B for the next 10, and so on. This distributed pipeline parallelism allows hardware that would normally be "obsolete" to contribute to inference of world-class AI models.</p>
-
       <h2>03. Optimization via Quantization (4-bit & 2-bit)</h2>
       <p>A major breakthrough in decentralized computing is <strong>Quantization</strong>. By reducing the precision of model weights from 16-bit floating points (FP16) to 4-bit integers (INT4), the memory footprint of a model is reduced by 70-80% with minimal accuracy loss.</p>
-      <p>This allows a high-performance LLM that once required 40GB of VRAM to run comfortably on a consumer laptop with 8GB of memory. In a decentralized environment, quantization acts as the "compressor" that makes widespread node participation possible.</p>
-
       <h2>04. The Role of Edge Intelligence</h2>
-      <p>The "Edge" refers to devices at the end of the network — smartphones, laptops, and IoT devices. Modern silicon, such as Apple's M-series chips or Qualcomm's NPU architectures, is now designed specifically for matrix multiplication. By moving inference to the edge, we achieve <strong>Data Sovereignty</strong> — user data never leaves the device.</p>
-
+      <p>The "Edge" refers to devices at the end of the network — smartphones, laptops, and IoT devices. Modern silicon, such as Apple's M-series chips or Qualcomm's NPU architectures, is now designed specifically for matrix multiplication.</p>
       <h2>05. Challenges in Latency and Bandwidth</h2>
-      <p>Despite the promise, decentralized computing faces the "Communication Overhead" challenge. Passing data between nodes over the internet is significantly slower than passing data inside a server rack via NVLink. Researchers are currently developing <strong>Asynchronous P2P Training</strong> and <strong>Weight-Streaming</strong> protocols to mitigate this.</p>
-
+      <p>Despite the promise, decentralized computing faces the "Communication Overhead" challenge. Passing data between nodes over the internet is significantly slower than passing data inside a server rack via NVLink.</p>
       <h2>06. Socio-Economic Impact on Academia</h2>
-      <p>For institutions like NIE, decentralized computing creates a "Shared Research Cloud." Students can donate their laptop's idle GPU power during the night to a communal pool, providing the department with a collective supercomputer for training specialized models on local Indian languages or engineering datasets.</p>
-
+      <p>For institutions like NIE, decentralized computing creates a "Shared Research Cloud." Students can donate their laptop's idle GPU power during the night to a communal pool, providing the department with a collective supercomputer.</p>
       <h2>07. Conclusion: The Swarm Intelligence</h2>
-      <p>The future of AI is not a single giant brain in a data center — it is a "Swarm Intelligence" with millions of smaller nodes working in perfect synchronization. Decentralized computing represents the ultimate democratization of technology.</p>
-      <blockquote>"In the age of LLMs, the most powerful computer is the one we build together, one node at a time."</blockquote>
+      <p>The future of AI is not a single giant brain in a data center — it is a "Swarm Intelligence" with millions of smaller nodes working in perfect synchronization.</p>
     </div>
   </div>
 </div>
@@ -1203,157 +873,54 @@
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isTouchOrSmall = window.matchMedia('(max-width: 768px), (pointer: coarse)').matches;
 
-  // CURSOR (desktop only)
+  // CURSOR
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursor-ring');
   if (cursor && ring && !isTouchOrSmall && !prefersReducedMotion) {
     let rx = 0, ry = 0, cx = 0, cy = 0;
-    document.addEventListener('mousemove', e => {
-      cx = e.clientX;
-      cy = e.clientY;
-      cursor.style.left = cx + 'px';
-      cursor.style.top = cy + 'px';
-    });
-
-    const animRing = () => {
-      rx += (cx - rx) * 0.12;
-      ry += (cy - ry) * 0.12;
-      ring.style.left = rx + 'px';
-      ring.style.top = ry + 'px';
-      requestAnimationFrame(animRing);
-    };
+    document.addEventListener('mousemove', e => { cx = e.clientX; cy = e.clientY; cursor.style.left = cx + 'px'; cursor.style.top = cy + 'px'; });
+    const animRing = () => { rx += (cx - rx) * 0.12; ry += (cy - ry) * 0.12; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(animRing); };
     animRing();
-  } else {
-    if (cursor) cursor.style.display = 'none';
-    if (ring) ring.style.display = 'none';
-  }
+  } else { if(cursor) cursor.style.display = ring.style.display = 'none'; }
 
-  // PARTICLE CANVAS (desktop only)
+  // CANVAS
   const canvas = document.getElementById('bg-canvas');
   if (canvas && !isTouchOrSmall && !prefersReducedMotion) {
     const ctx = canvas.getContext('2d');
     let W, H, particles = [];
-
-    const resize = () => {
-      W = canvas.width = window.innerWidth;
-      H = canvas.height = window.innerHeight;
-    };
-    resize();
-    window.addEventListener('resize', resize);
-
+    const resize = () => { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; };
+    resize(); window.addEventListener('resize', resize);
     class Particle {
       constructor() { this.reset(); }
-      reset() {
-        this.x = Math.random() * W;
-        this.y = Math.random() * H;
-        this.vx = (Math.random() - 0.5) * 0.4;
-        this.vy = (Math.random() - 0.5) * 0.4;
-        this.r = Math.random() * 1.5 + 0.5;
-        this.a = Math.random() * 0.5 + 0.1;
-      }
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        if (this.x < 0 || this.x > W || this.y < 0 || this.y > H) this.reset();
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(200,255,0,${this.a})`;
-        ctx.fill();
-      }
+      reset() { this.x = Math.random() * W; this.y = Math.random() * H; this.vx = (Math.random() - 0.5) * 0.4; this.vy = (Math.random() - 0.5) * 0.4; this.r = Math.random() * 1.5 + 0.5; this.a = Math.random() * 0.5 + 0.1; }
+      update() { this.x += this.vx; this.y += this.vy; if (this.x < 0 || this.x > W || this.y < 0 || this.y > H) this.reset(); }
+      draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2); ctx.fillStyle = `rgba(200,255,0,${this.a})`; ctx.fill(); }
     }
-
-    const count = 90;
-    for (let i = 0; i < count; i++) particles.push(new Particle());
-
-    const drawLines = () => {
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
-            ctx.beginPath();
-            ctx.strokeStyle = `rgba(200,255,0,${0.08 * (1 - dist / 120)})`;
-            ctx.lineWidth = 0.5;
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
-        }
-      }
-    };
-
+    for (let i = 0; i < 90; i++) particles.push(new Particle());
     const animate = () => {
       ctx.clearRect(0, 0, W, H);
-      particles.forEach(p => {
-        p.update();
-        p.draw();
-      });
-      drawLines();
+      particles.forEach(p => { p.update(); p.draw(); });
       requestAnimationFrame(animate);
     };
     animate();
-  } else if (canvas) {
-    canvas.style.display = 'none';
   }
 
-  // SCROLL REVEAL
-  const reveals = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-    }, { threshold: 0.1 });
-    reveals.forEach(r => io.observe(r));
-  } else {
-    reveals.forEach(r => r.classList.add('visible'));
-  }
+  // REVEAL
+  const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(r => io.observe(r));
 
   // MOBILE NAV
   const mobileNavToggle = document.getElementById('mobile-nav-toggle');
   const mobileNavPanel = document.getElementById('mobile-nav-panel');
+  mobileNavToggle.addEventListener('click', () => { document.body.classList.toggle('menu-open'); });
+  mobileNavPanel.querySelectorAll('a').forEach(link => link.addEventListener('click', () => document.body.classList.remove('menu-open')));
 
-  if (mobileNavToggle && mobileNavPanel) {
-    mobileNavToggle.addEventListener('click', () => {
-      const isOpen = document.body.classList.toggle('menu-open');
-      mobileNavToggle.setAttribute('aria-expanded', String(isOpen));
-    });
-
-    document.addEventListener('click', (event) => {
-      if (!document.body.classList.contains('menu-open')) return;
-      const clickedToggle = mobileNavToggle.contains(event.target);
-      const clickedPanel = mobileNavPanel.contains(event.target);
-      if (!clickedToggle && !clickedPanel) {
-        document.body.classList.remove('menu-open');
-        mobileNavToggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-
-    mobileNavPanel.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        document.body.classList.remove('menu-open');
-        mobileNavToggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 768) {
-        document.body.classList.remove('menu-open');
-        mobileNavToggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-  }
-
-  // ARTICLE
-  function openArticle() {
-    document.getElementById('article-overlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeArticle() {
-    document.getElementById('article-overlay').classList.remove('open');
-    document.body.style.overflow = '';
-  }
+  // ARTICLE & CERT VAULT LOGIC
+  function openArticle() { document.getElementById('article-overlay').classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeArticle() { document.getElementById('article-overlay').classList.remove('open'); document.body.style.overflow = ''; }
+  
+  function openCerts() { document.getElementById('certs-overlay').classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeCerts() { document.getElementById('certs-overlay').classList.remove('open'); document.body.style.overflow = ''; }
 </script>
 </body>
 </html>
