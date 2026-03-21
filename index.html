@@ -12,7 +12,7 @@
     --surface: #111111;
     --surface2: #161616;
     --border: rgba(255,255,255,0.08);
-    --text: #ffffff; 
+    --text: #ffffff;
     --muted: #cec6c6;
     --accent: #c8ff00;
     --accent2: #ff4545;
@@ -20,6 +20,7 @@
     --font-display: 'Syne', sans-serif;
     --font-mono: 'DM Mono', monospace;
     --font-body: 'Outfit', sans-serif;
+    --nav-height: 76px;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,15 +32,19 @@
   }
 
   body {
-   background: var(--bg);
-   color: var(--text);
-   font-family: var(--font-body);
-   font-weight: 300;
-   overflow-x: hidden;
-   cursor: none;
-   min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: none;
+    min-height: 100vh;
     width: 100%;
     max-width: 100%;
+  }
+
+  body.overlay-open {
+    overflow: hidden;
   }
 
   /* CUSTOM CURSOR */
@@ -79,9 +84,15 @@
 
   /* NAV */
   nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 300;
+    min-height: var(--nav-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: clamp(12px, 3vw, 20px) clamp(16px, 4vw, 40px);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
@@ -143,15 +154,15 @@
   .mobile-nav-panel {
     display: none;
     position: fixed;
-    top: clamp(60px, 10vh, 80px);
+    top: var(--nav-height);
     left: 0;
     right: 0;
-    z-index: 150;
+    z-index: 320;
     padding: clamp(12px, 3vw, 18px);
     background: rgba(8,8,8,0.97);
     border-bottom: 1px solid var(--border);
     backdrop-filter: blur(12px);
-    max-height: calc(100vh - clamp(60px, 10vh, 80px));
+    max-height: calc(100vh - var(--nav-height));
     overflow-y: auto;
   }
   .mobile-nav-panel a {
@@ -212,7 +223,7 @@
   display: flex;
   gap: 16px;
   width: 100%;
-  margin-top: 40px;   /* 🔥 increase space */
+  margin-top: 40px;
 }
 
 /* optional style */
@@ -342,9 +353,13 @@
 
   /* VAULT OVERLAY STYLES */
   #certs-overlay {
-    position: fixed; inset: 0; background: var(--bg);
-    z-index: 250; overflow-y: auto;
-    transform: translateY(100%); transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    z-index: 520;
+    overflow-y: auto;
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
   }
   #certs-overlay.open { transform: translateY(0); }
   .certs-inner { max-width: 1200px; margin: 0 auto; padding: clamp(40px, 8vh, 80px) clamp(16px, 4vw, 40px); }
@@ -421,128 +436,179 @@
 
   /* ARTICLE OVERLAY */
   #article-overlay {
-    position: fixed; inset: 0; background: var(--bg);
-    z-index: 200; overflow-y: auto;
-    transform: translateY(100%); transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    z-index: 510;
+    overflow-y: auto;
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
   }
   #article-overlay.open { transform: translateY(0); }
-  .article-inner { max-width: 760px; margin: 0 auto; padding: clamp(40px, 8vh, 80px) clamp(16px, 4vw, 40px) clamp(80px, 12vh, 120px); }
+  .article-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: calc(var(--nav-height) + 24px) clamp(16px, 4vw, 40px) clamp(80px, 12vh, 120px);
+  }
   .article-back {
-  position: sticky;   /* 🔥 IMPORTANT */
-  top: 0;             /* 🔥 sticks to top */
-  z-index: 10;
-
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--muted);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-
-  background: var(--bg);  /* 🔥 prevents overlap */
-  border: none;
-  cursor: pointer;
-
-  padding-bottom: 10px;
-  margin-bottom: clamp(40px, 8vh, 60px);
-}.article-title { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.8rem, 6vw, 3.2rem); color: var(--text); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 16px; }
+    position: sticky;
+    top: 8px;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    background: var(--bg);
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 10px 0;
+    transition: color 0.2s ease;
+  }
+  .article-back:hover {
+    color: var(--accent);
+  }
+  .article-title { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.8rem, 6vw, 3.2rem); color: var(--text); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 16px; }
   .article-subtitle { font-family: var(--font-mono); font-size: clamp(0.65rem, 1.2vw, 0.75rem); color: var(--accent); letter-spacing: 0.15em; margin-bottom: clamp(32px, 6vh, 48px); }
   .article-body { color: #aaa; font-size: 1.05rem; line-height: 1.85; }
   .article-body h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.1rem, 2.5vw, 1.3rem); color: var(--text); margin: clamp(24px, 4vh, 48px) 0 clamp(12px, 2vh, 16px); }
   .article-body blockquote { border-left: 3px solid var(--accent); padding: 20px 24px; background: var(--surface); margin: 32px 0; font-style: italic; color: #ccc; }
 
   /* CONTACT */
-  #contact { background: var(--bg); padding: 120px 40px; }
-  .contact-wrapper { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(40px, 8vw, 80px); align-items: flex-start; }
-  .contact-title-large { font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 6vw, 4rem); line-height: 1.1; color: #ffffff; margin-bottom: clamp(20px, 4vh, 32px); }
-  .contact-desc { color: var(--muted); font-size: clamp(0.95rem, 2vw, 1.1rem); line-height: 1.7; max-width: clamp(350px, 90vw, 450px); margin-bottom: 48px; }
-  .contact-item { 
-  display: flex; 
-  justify-content: center;   /* 🔥 THIS centers */
-  align-items: center; 
-  gap: 20px;                 /* spacing between items */
-  padding: clamp(16px, 2.5vh, 24px) 0; 
-  border-bottom: 1px solid var(--border); 
-  text-decoration: none; 
-  transition: all 0.3s ease; 
-}.contact-item {
-  display: flex;
-  justify-content: space-between;   /* 🔥 FIX */
-  align-items: center;
-  padding: clamp(16px, 2.5vh, 24px) 0;
-  border-bottom: 1px solid var(--border);
-  text-decoration: none;
-  transition: all 0.3s ease;
-  width: 100%;
-  max-width: 600px;
-}.contact-item:hover { border-bottom-color: var(--accent); }
+  #contact {
+    background: var(--bg);
+  }
+  .contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: clamp(36px, 7vw, 80px);
+    align-items: start;
+  }
+  .contact-title-large {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2rem, 6vw, 4rem);
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: clamp(20px, 4vh, 32px);
+  }
+  .contact-desc {
+    color: var(--muted);
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    line-height: 1.7;
+    max-width: 440px;
+    margin-bottom: 40px;
+  }
+  .contact-right {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    min-width: 0;
+  }
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--border);
+    padding: 14px;
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    outline: none;
+  }
+  .contact-form textarea {
+    min-height: 140px;
+    resize: vertical;
+  }
+  .contact-form button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    min-height: 44px;
+    padding: 12px 22px;
+    background: var(--accent);
+    color: #000;
+    border: 1px solid var(--accent);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .contact-form button:hover {
+    background: #fff;
+    border-color: #fff;
+    transform: translate(-2px, -2px);
+    box-shadow: 2px 2px 0 var(--accent);
+  }
+  .contact-links {
+    grid-column: 1 / -1;
+    width: min(760px, 100%);
+    margin: clamp(12px, 2vh, 20px) auto 0;
+  }
+  .contact-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: clamp(14px, 2.2vh, 22px) 0;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    transition: border-color 0.25s ease;
+  }
+  .contact-item:hover {
+    border-bottom-color: var(--accent);
+  }
   .item-arrow {
-  stroke: #ffffff;
-}
-  .item-label { font-family: var(--font-mono); font-size: clamp(0.6rem, 1vw, 0.65rem); color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; }
-  .item-value { font-family: var(--font-display); font-weight: 600; font-size: clamp(1rem, 2.5vw, 1.4rem); color: #888; transition: color 0.3s ease; }
-  .btn-resume-framed { display: inline-flex; align-items: center; gap: clamp(8px, 1.5vw, 12px); padding: clamp(14px, 2.5vh, 18px) clamp(20px, 4vw, 32px); border: 1px solid var(--border); color: #ffffff; font-family: var(--font-mono); font-size: clamp(0.65rem, 1.2vw, 0.75rem); text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; transition: all 0.3s; }
-  .btn-resume-framed:hover { border-color: var(--accent); color: var(--accent); }
-  .btn-resume-framed:hover { 
-  border-color: var(--accent); 
-  color: var(--accent); 
-}
-
-/* 👇 ADD FROM HERE */
-
-.contact-right {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
-
-.contact-links {
-  grid-column: 1 / -1;   /* 🔥 spans entire width (both columns) */
-  display: flex;
-  flex-direction: column;
-  align-items: center;   /* 🔥 centers horizontally */
-  margin-top: 40px;
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.contact-form input,
-.contact-form textarea {
-  background: transparent;
-  border: 1px solid var(--border);
-  padding: 14px;
-  color: var(--text);
-  font-family: var(--font-mono);
-  outline: none;
-}
-
-.contact-form textarea {
-  min-height: 120px;
-  resize: none;
-}
-
-.contact-form button {
-  background: var(--accent);
-  border: none;
-  padding: 14px;
-  font-family: var(--font-display);
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.contact-form button:hover {
-  background: #fff;
-  transform: translate(-3px, -3px);
-  box-shadow: 3px 3px 0 var(--accent);
-}
-
+    stroke: #ffffff;
+    flex: 0 0 auto;
+  }
+  .item-label {
+    font-family: var(--font-mono);
+    font-size: clamp(0.62rem, 1vw, 0.68rem);
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .item-value {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(0.82rem, 2vw, 1rem);
+    color: #aba6a6;
+    transition: color 0.3s ease;
+  }
+  .btn-resume-framed {
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(8px, 1.5vw, 12px);
+    min-height: 44px;
+    padding: clamp(12px, 2.5vh, 16px) clamp(18px, 4vw, 30px);
+    border: 1px solid var(--border);
+    color: #ffffff;
+    font-family: var(--font-mono);
+    font-size: clamp(0.65rem, 1.2vw, 0.75rem);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .btn-resume-framed:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
   /* FOOTER */
   footer { padding: clamp(20px, 3vh, 32px) clamp(16px, 4vw, 40px); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 1; flex-wrap: wrap; gap: 12px; }
   footer p { font-family: var(--font-mono); font-size: clamp(0.55rem, 0.9vw, 0.6rem); color: var(--muted); letter-spacing: 0.1em; }
@@ -554,80 +620,111 @@
 
   /* RESPONSIVE FIXES */
   @media (max-width: 1024px) {
-    .nav-links, .nav-status { display: none; }
-    .mobile-nav-toggle { display: flex; }
-    
-    /* Grid Fixes */
-    .about-grid, .contact-top-grid { grid-template-columns: 1fr; gap: 40px; }
-    
-    
-    /* Shrink Titles for Mobile */
-    .hero-title { font-size: 14vw; line-height: 1; }
-    .section-title { font-size: 2.2rem; }
-    .contact-title-huge { font-size: 2.8rem; }
-    
-    section { padding: 60px 0; }
-    .container { padding: 0 20px; }
-  }
-
-  @media (max-width: 768px) {
-    .cursor, .cursor-ring, #bg-canvas { display: none; }
-    body { cursor: auto; }
-    
-    .hero-buttons { flex-direction: column; width: 100%; }
-    .hero-cta { width: 100%; }
+    .nav-links,
+    .nav-status {
+      display: none;
+    }
+    .mobile-nav-toggle {
+      display: flex;
+    }
+    .about-grid,
+    .contact-wrapper {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    #hero {
+      padding-top: calc(var(--nav-height) + 40px);
+      justify-content: center;
+    }
+    .hero-title {
+      font-size: clamp(2.5rem, 12vw, 6.8rem);
+      line-height: 0.95;
+    }
+    .hero-sub {
+      flex-direction: column;
+      gap: 24px;
+    }
+    .hero-buttons {
+      margin-top: 16px;
+      width: 100%;
+      gap: 12px;
+    }
     .hero-cta {
-  font-size: 0.65rem;
-  padding: 10px 16px;
-}
-
-.hero-buttons {
-  gap: 12px;
-}
-    
-    /* Social Links Mobile Styling */
-    .link-logo-col, .link-arrow-col { flex: 0 0 40px; }
-    .link-label-col { font-size: 0.85rem; letter-spacing: 0.1em; }
-    .contact-link-row { padding: 20px 0; }
-    .link-logo-col img { height: 20px; }
-    .white-arrow { width: 22px; height: 22px; }
+      min-width: 0;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 8vw, 2.8rem);
+    }
   }
+
   @media (max-width: 768px) {
-  .cursor, .cursor-ring, #bg-canvas { display: none; }
-  body { cursor: auto; }
-
-  .hero-title { font-size: clamp(2rem, 12vw, 3.2rem); }
-  .about-grid { grid-template-columns: 1fr; }
-  
-
-  /* 🔥 ADD THESE */
-  .hero-sub {
-    flex-direction: column;
-  }
-
-  .contact-wrapper {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .contact-left,
-  .contact-right {
-    width: 100%;
-  }
-
-  .contact-form,
-  .contact-links {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .contact-item {
-    width: 100%;
-    max-width: 100%;
-  }
-
-}
-</style>
+    .cursor,
+    .cursor-ring,
+    #bg-canvas {
+      display: none;
+    }
+    body {
+      cursor: auto;
+    }
+    section {
+      padding: clamp(44px, 8vh, 60px) 16px;
+    }
+    .container {
+      padding: 0 8px;
+    }
+    #hero {
+      min-height: 100svh;
+      padding: calc(var(--nav-height) + 32px) 16px 40px;
+      justify-content: center;
+      gap: 18px;
+    }
+    .hero-title {
+      font-size: clamp(1.3rem, 10vw, 2.8rem);
+      white-space: nowrap;
+    }
+    .hero-sub p {
+      max-width: 100%;
+    }
+    .hero-buttons {
+      flex-direction: column;
+      width: 100%;
+    }
+    .hero-cta {
+      width: 100%;
+      font-size: 0.65rem;
+      padding: 11px 14px;
+    }
+    .hero-scroll {
+      display: none;
+    }
+    .blog-meta {
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .read-more {
+      margin-left: 0;
+    }
+    .contact-form button {
+      width: 100%;
+    }
+    .contact-links {
+      margin-top: 0;
+    }
+    .contact-item {
+      gap: 10px;
+      overflow-wrap: anywhere;
+    }
+    .discord-wrapper {
+      gap: 10px;
+    }
+    .item-logo {
+      height: 22px;
+    }
+    .item-arrow {
+      width: 20px;
+      height: 20px;
+    }
+  }</style>
 </head>
 <body>
 
@@ -677,7 +774,7 @@
   <div class="hero-sub">
   <p>Building intelligent systems at the intersection of AI, machine learning, and distributed computing.</p>
 
-  <!-- 🔥 ADD THIS WRAPPER -->
+  <!-- HERO BUTTONS -->
   <div class="hero-buttons">
 
     <a class="hero-cta" href="#about">
@@ -687,7 +784,7 @@
       </svg>
     </a>
 
-    <a class="hero-cta" href="#contact">
+    <a class="hero-cta secondary" href="#contact">
       Get in Touch
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
         <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -696,6 +793,8 @@
 
   </div>
 </div>
+  <div class="hero-scroll">SCROLL / EXPLORE</div>
+</section>
 
 <!-- ABOUT -->
 <section id="about">
@@ -869,19 +968,27 @@
 
   <!-- FORM -->
   <form id="contact-form" class="contact-form">
-  <input type="text" name="user_name" placeholder="NAME / IDENTIFIER" required>
-  <input type="email" name="user_email" placeholder="EMAIL ADDRESS" required>
-  <textarea name="message" placeholder="MESSAGE CONTENT" required></textarea>
-  <button type="submit">TRANSMIT MESSAGE</button>
-</form>
+    <input type="text" name="from_name" placeholder="NAME / IDENTIFIER" required>
+    <input type="email" name="from_email" placeholder="EMAIL ADDRESS" required>
+    <textarea name="message" placeholder="MESSAGE CONTENT" required></textarea>
+    <input type="hidden" name="to_name" value="Tilak M K">
+    <input type="hidden" name="reply_to" value="">
+    <button id="contact-submit" type="submit">TRANSMIT MESSAGE</button>
+  </form>
       </div>
   <!-- LINKS -->
   <div class="contact-links">
+     <!-- Gmail (Logo Only) -->
         <a href="mailto:tilakbhat098@gmail.com" class="contact-item">
           <img src="https://cdn.simpleicons.org/gmail" class="item-logo" alt="Gmail">
-          <div><div class="item-label">GMAIL</div></div>
+           <div>
+              <div class="item-label">GMAIL</div>
+              
+            </div>
           <svg class="item-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-        </a><!-- LinkedIn -->
+        </a>
+
+       <!-- LinkedIn -->
       <a href="https://www.linkedin.com/in/tilak-m-k-a2408635a/" target="_blank" rel="noopener noreferrer" class="contact-item">
   <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Linkedin-png-linkedin-icon-1600.png" class="item-logo" alt="LinkedIn">
         <div>
@@ -891,17 +998,28 @@
     <path d="M7 17L17 7M17 7H7M17 7v10"/>
   </svg>
 </a>
-
+        <!-- GitHub (Logo Only) -->
         <a href="https://github.com/TILAKMK" target="_blank" class="contact-item">
           <img src="https://cdn.simpleicons.org/github" class="item-logo" alt="GitHub">
-          <div><div class="item-label">GitHub</div></div>
+           <div>
+              <div class="item-label">GitHub</div>
+              
+            </div>
+
           <svg class="item-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
         </a>
-        <a href="https://x.com/TilakBhat52987" target="_blank" class="contact-item">
-          <img src="https://cdn.simpleicons.org/x/white" class="item-logo" alt="X">
-          <div><div class="item-label">X</div></div>
-          <svg class="item-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-        </a>
+
+      <!-- X / Twitter (Logo Only) -->
+  <a href="https://x.com/TilakBhat52987" target="_blank" class="contact-item">
+    <img src="https://cdn.simpleicons.org/x/white" class="item-logo" alt="X">
+     <div>
+              <div class="item-label">X</div>
+              
+            </div>
+    <svg class="item-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+  </a>
+
+        <!-- Discord (Logo + ID) -->
         <a href="https://discord.com/users/1372154617881694250" target="_blank" class="contact-item">
           <div class="discord-wrapper">
             <img src="https://cdn.simpleicons.org/discord" class="item-logo" alt="Discord">
@@ -922,20 +1040,16 @@
               <div>
               </div>
               <div>
-              </div><div>
               </div>
               <div>
               </div>
-              <div>
-              </div>
-              
-
-            <div class="item-value" style="color: #aba6a6; font-size: 0.9rem;">ID:1372154617881694250</div>
+            
+            
+            <div class="item-value" style="color: #aba6a6; font-size: 0.9rem;">ID:1372154617881694250   </div>
           </div>
           <svg class="item-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
         </a>
-        
-      </div>
+  </div>
     </div>
   
 </section>
@@ -1106,6 +1220,7 @@
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isTouchOrSmall = window.matchMedia('(max-width: 768px), (pointer: coarse)').matches;
@@ -1114,75 +1229,193 @@
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursor-ring');
   if (cursor && ring && !isTouchOrSmall && !prefersReducedMotion) {
-    let rx = 0, ry = 0, cx = 0, cy = 0;
-    document.addEventListener('mousemove', e => { cx = e.clientX; cy = e.clientY; cursor.style.left = cx + 'px'; cursor.style.top = cy + 'px'; });
-    const animRing = () => { rx += (cx - rx) * 0.12; ry += (cy - ry) * 0.12; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(animRing); };
+    let rx = 0;
+    let ry = 0;
+    let cx = 0;
+    let cy = 0;
+    document.addEventListener('mousemove', e => {
+      cx = e.clientX;
+      cy = e.clientY;
+      cursor.style.left = cx + 'px';
+      cursor.style.top = cy + 'px';
+    });
+    const animRing = () => {
+      rx += (cx - rx) * 0.12;
+      ry += (cy - ry) * 0.12;
+      ring.style.left = rx + 'px';
+      ring.style.top = ry + 'px';
+      requestAnimationFrame(animRing);
+    };
     animRing();
-  } else { if(cursor) cursor.style.display = ring.style.display = 'none'; }
+  } else if (cursor && ring) {
+    cursor.style.display = 'none';
+    ring.style.display = 'none';
+  }
 
   // CANVAS
   const canvas = document.getElementById('bg-canvas');
   if (canvas && !isTouchOrSmall && !prefersReducedMotion) {
     const ctx = canvas.getContext('2d');
-    let W, H, particles = [];
-    const resize = () => { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; };
-    resize(); window.addEventListener('resize', resize);
+    let width;
+    let height;
+    const particles = [];
+
+    const resize = () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    };
+
     class Particle {
-      constructor() { this.reset(); }
-      reset() { this.x = Math.random() * W; this.y = Math.random() * H; this.vx = (Math.random() - 0.5) * 0.4; this.vy = (Math.random() - 0.5) * 0.4; this.r = Math.random() * 1.5 + 0.5; this.a = Math.random() * 0.5 + 0.1; }
-      update() { this.x += this.vx; this.y += this.vy; if (this.x < 0 || this.x > W || this.y < 0 || this.y > H) this.reset(); }
-      draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2); ctx.fillStyle = `rgba(200,255,0,${this.a})`; ctx.fill(); }
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 0.4;
+        this.vy = (Math.random() - 0.5) * 0.4;
+        this.r = Math.random() * 1.5 + 0.5;
+        this.a = Math.random() * 0.5 + 0.1;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > width || this.y < 0 || this.y > height) {
+          this.reset();
+        }
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(200,255,0,${this.a})`;
+        ctx.fill();
+      }
     }
-    for (let i = 0; i < 90; i++) particles.push(new Particle());
+
+    resize();
+    window.addEventListener('resize', resize);
+    for (let i = 0; i < 90; i++) {
+      particles.push(new Particle());
+    }
+
     const animate = () => {
-      ctx.clearRect(0, 0, W, H);
-      particles.forEach(p => { p.update(); p.draw(); });
+      ctx.clearRect(0, 0, width, height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
       requestAnimationFrame(animate);
     };
+
     animate();
   }
 
   // REVEAL
-  const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(r => io.observe(r));
 
   // MOBILE NAV
   const mobileNavToggle = document.getElementById('mobile-nav-toggle');
   const mobileNavPanel = document.getElementById('mobile-nav-panel');
-  mobileNavToggle.addEventListener('click', () => { document.body.classList.toggle('menu-open'); });
-  mobileNavPanel.querySelectorAll('a').forEach(link => link.addEventListener('click', () => document.body.classList.remove('menu-open')));
+  const toggleMenu = isOpen => {
+    document.body.classList.toggle('menu-open', isOpen);
+    mobileNavToggle.setAttribute('aria-expanded', String(isOpen));
+  };
+  mobileNavToggle.addEventListener('click', () => {
+    const nextState = !document.body.classList.contains('menu-open');
+    toggleMenu(nextState);
+  });
+  mobileNavPanel.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => toggleMenu(false));
+  });
 
-  // ARTICLE & CERT VAULT LOGIC
+  // OVERLAYS
+  const articleOverlay = document.getElementById('article-overlay');
+  const certsOverlay = document.getElementById('certs-overlay');
+
   function openArticle() {
-  document.getElementById("article-overlay").classList.add("open");
-  window.scrollTo(0, 0);   // 🔥 THIS FIXES YOUR ISSUE
-}
+    articleOverlay.classList.add('open');
+    document.body.classList.add('overlay-open');
+  }
 
-function closeArticle() {
-  document.getElementById("article-overlay").classList.remove("open");
-}
-  function openCerts() { document.getElementById('certs-overlay').classList.add('open'); document.body.style.overflow = 'hidden'; }
-  function closeCerts() { document.getElementById('certs-overlay').classList.remove('open'); document.body.style.overflow = ''; }
-</script>
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  function closeArticle() {
+    articleOverlay.classList.remove('open');
+    if (!certsOverlay.classList.contains('open')) {
+      document.body.classList.remove('overlay-open');
+    }
+  }
 
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  function openCerts() {
+    certsOverlay.classList.add('open');
+    document.body.classList.add('overlay-open');
+  }
 
-<script>
-  (function(){
-    emailjs.init("sBoyhtHKaXGHrq7wM");   // 🔥 replace this
-  })();
+  function closeCerts() {
+    certsOverlay.classList.remove('open');
+    if (!articleOverlay.classList.contains('open')) {
+      document.body.classList.remove('overlay-open');
+    }
+  }
 
-  document.getElementById("contact-form").addEventListener("submit", function(e) {
-    e.preventDefault();
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeArticle();
+      closeCerts();
+      toggleMenu(false);
+    }
+  });
 
-    emailjs.sendForm("service_pl2pweg", "template_asf30em", this)  // 🔥 replace template
-      .then(function() {
-        alert("Message sent successfully 🚀");
-      }, function(error) {
-        alert("Failed to send ❌");
-        console.log(error);
-      });
+  // EMAILJS
+  emailjs.init('sBoyhtHKaXGHrq7wM');
+
+  const contactForm = document.getElementById('contact-form');
+  const submitButton = document.getElementById('contact-submit');
+
+  contactForm.addEventListener('submit', async event => {
+    event.preventDefault();
+
+    const formData = new FormData(contactForm);
+    const fromName = String(formData.get('from_name') || '').trim();
+    const fromEmail = String(formData.get('from_email') || '').trim();
+    const message = String(formData.get('message') || '').trim();
+
+    if (!fromName || !fromEmail || !message) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+
+    contactForm.querySelector('input[name="reply_to"]').value = fromEmail;
+
+    submitButton.disabled = true;
+    submitButton.textContent = 'SENDING...';
+
+    const templateParams = {
+      from_name: fromName,
+      from_email: fromEmail,
+      reply_to: fromEmail,
+      message,
+      user_name: fromName,
+      user_email: fromEmail,
+      to_name: 'Tilak M K'
+    };
+
+    try {
+      await emailjs.send('service_pl2pweg', 'template_asf30em', templateParams);
+      alert('Message sent successfully.');
+      contactForm.reset();
+    } catch (error) {
+      console.error('EmailJS send failed:', error);
+      alert('Message could not be sent. Please try again in a minute.');
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = 'TRANSMIT MESSAGE';
+    }
   });
 </script>
 </body>
