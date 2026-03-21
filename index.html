@@ -178,12 +178,12 @@
 
   /* HERO */
   #hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;   /* 🔥 center vertically */
-  padding: clamp(60px, 10vh, 80px) clamp(16px, 4vw, 40px);
-}
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: clamp(100px, 15vh, 120px) clamp(16px, 4vw, 40px) clamp(50px, 8vh, 60px);
+    position: relative; z-index: 1;
+  }
+
   .hero-tag {
     font-family: var(--font-mono); font-size: 0.7rem;
     color: var(--accent); letter-spacing: 0.2em;
@@ -200,10 +200,32 @@
   .hero-title .line2 { color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.3); }
   .hero-title .line3 { color: var(--accent); }
   .hero-sub {
-    margin-top: clamp(24px, 4vh, 40px); display: flex; align-items: flex-start; gap: clamp(24px, 4vw, 48px);
-    opacity: 0; animation: fadeUp 0.8s 0.7s forwards;
-    flex-wrap: wrap;
-  }
+  margin-top: clamp(24px, 4vh, 40px);
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(24px, 4vw, 48px);
+  opacity: 0;
+  animation: fadeUp 0.8s 0.7s forwards;
+  flex-wrap: wrap;
+}
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  margin-top: 40px;   /* 🔥 increase space */
+}
+
+/* optional style */
+.hero-cta.secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.hero-cta.secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
   .hero-sub p {
     font-family: var(--font-body); font-weight: 300;
     font-size: clamp(0.95rem, 2vw, 1.05rem); color: var(--muted); max-width: clamp(280px, 80vw, 380px); line-height: 1.6;
@@ -524,6 +546,9 @@
   .about-grid { grid-template-columns: 1fr; }
 
   /* 🔥 ADD THESE */
+  .hero-sub {
+    flex-direction: column;
+  }
 
   .contact-wrapper {
     grid-template-columns: 1fr;
@@ -595,16 +620,27 @@
     <span class="line3">.</span>
   </h1>
   <div class="hero-sub">
-    <p>Building intelligent systems at the intersection of AI, machine learning, and distributed computing.</p>
+  <p>Building intelligent systems at the intersection of AI, machine learning, and distributed computing.</p>
+
+  <!-- 🔥 ADD THIS WRAPPER -->
+  <div class="hero-buttons">
+
+    <a class="hero-cta secondary" href="#about">
+      Access Identity
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+
     <a class="hero-cta" href="#contact">
       Get in Touch
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
         <path d="M5 12h14M12 5l7 7-7 7"/>
       </svg>
     </a>
+
   </div>
-  <div class="hero-scroll">SCROLL DOWN</div>
-</section>
+</div>
 
 <!-- ABOUT -->
 <section id="about">
