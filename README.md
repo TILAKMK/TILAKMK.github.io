@@ -13,7 +13,13 @@
 
 ## 🚀 About
 
-Personal portfolio website showcasing my projects, skills, resume, and journey as an AIML Engineering Student.
+<p align="center">
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=TILAKMK&theme=tokyonight" width="80%"/>
+</p>
+
+> 🎓 2nd Year AIML Student | NIE, Mysore  
+> ⚙️ AI · ML · Web Dev · Automation  
+> 🚀 Always building. Always learning.
 
 ---
 
