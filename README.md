@@ -12,22 +12,7 @@
 ---
 
 ## 🚀 About
-
-<table>
-  <tr>
-    <td width="60%">
-
-🎓 **2nd Year AIML Student** | NIE, Mysore  
-⚙️ Exploring **AI · ML · Web Dev · Automation**  
-📂 This site = my projects + resume + proof of work  
-🚀 Always building. Always learning.
-
-  </td>
-  <td width="40%">
-    <img src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" width="100%"/>
-  </td>
-  </tr>
-</table>
+Personal portfolio website showcasing my projects, skills, resume, and journey as an AIML Engineering Student
 
 ---
 
