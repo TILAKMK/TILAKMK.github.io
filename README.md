@@ -13,13 +13,21 @@
 
 ## 🚀 About
 
-<p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=TILAKMK&theme=tokyonight" width="80%"/>
-</p>
+<table>
+  <tr>
+    <td width="60%">
 
-> 🎓 2nd Year AIML Student | NIE, Mysore  
-> ⚙️ AI · ML · Web Dev · Automation  
-> 🚀 Always building. Always learning.
+🎓 **2nd Year AIML Student** | NIE, Mysore  
+⚙️ Exploring **AI · ML · Web Dev · Automation**  
+📂 This site = my projects + resume + proof of work  
+🚀 Always building. Always learning.
+
+  </td>
+  <td width="40%">
+    <img src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" width="100%"/>
+  </td>
+  </tr>
+</table>
 
 ---
 
